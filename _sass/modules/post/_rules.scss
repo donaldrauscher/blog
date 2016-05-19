@@ -17,41 +17,12 @@
         margin-bottom: 15px;
     }
 
-    .post-header--dw,
-    .post-header--ar {
-        background-size: 24px;
-    }
-
     .post-header--dw {
-        // Non-retina device
-        background-image: url($watch-1);
-
-        // Retina @2x device
-        @media only screen and (-webkit-min-device-pixel-ratio: 1.2), only screen and (min--moz-device-pixel-ratio: 1.2), only screen and (-o-min-device-pixel-ratio: 5/4), only screen and (min-device-pixel-ratio: 1.2), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.2dppx) {
-            background-image: url($watch-1-2x);
-            background-size: 25px;
-        }
-
-        // Retina @3x device
-        @media only screen and (-webkit-min-device-pixel-ratio: 3), only screen and (min--moz-device-pixel-ratio: 3), only screen and (-o-min-device-pixel-ratio: 3/1), only screen and (min-device-pixel-ratio: 3), only screen and (min-resolution: 288dpi), only screen and (min-resolution: 3dppx) {
-            background-image: url($watch-1-3x);
-            background-size: 25px;
-        }
+        background-image: url(/blog/img/icon-page.png);
     }
 
     .post-header--ar {
-         // Non-retina device
-        background-image: url($watch-2);
-
-        // Retina @2x device
-        @media only screen and (-webkit-min-device-pixel-ratio: 1.2), only screen and (min--moz-device-pixel-ratio: 1.2), only screen and (-o-min-device-pixel-ratio: 5/4), only screen and (min-device-pixel-ratio: 1.2), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.2dppx) {
-            background-image: url($watch-2-2x);
-        }
-
-        // Retina @3x device
-        @media only screen and (-webkit-min-device-pixel-ratio: 3), only screen and (min--moz-device-pixel-ratio: 3), only screen and (-o-min-device-pixel-ratio: 3/1), only screen and (min-device-pixel-ratio: 3), only screen and (min-resolution: 288dpi), only screen and (min-resolution: 3dppx) {
-            background-image: url($watch-2-3x);
-        }
+        background-image: url(/blog/img/icon-page.png);
     }
 
     .post-header-title {
@@ -207,6 +178,11 @@
         max-width: 50%;
     }
 
+    ul.post-footer-tags { //Remove padding and list style from lists
+        padding: 0;
+        list-style: none;
+    }
+
     .post-footer-tags {
         // In order to play nicely with the location element floated to the right of the footer
         float: left;
@@ -222,36 +198,59 @@
         letter-spacing: 1px;
     }
 
-    .post-footer-location {
-        font-family: $title-font;
-        font-weight: bold;
-        font-size: $caption-text-size;
-        color: $caption-colour;
-        float: right;
-        min-height: $post-footer-location-height;
-        line-height: $post-footer-location-line-height;
-        padding-right: 51px;
-        letter-spacing: 1px;
+    a.social-share-element {
+        display: inline-block;
+        height: 24px;
+        width: 24px;
+        background-size: 24px 24px;
+        background-position: center center;
         background-repeat: no-repeat;
-        background-position: right center;
-        background-color: transparent;
-        background-size: 44px;
-
-        // Non-retina devices
-        background-image: url($icon-location);
-
-        // Retina @2x device
-        @media only screen and (-webkit-min-device-pixel-ratio: 1.2), only screen and (min--moz-device-pixel-ratio: 1.2), only screen and (-o-min-device-pixel-ratio: 5/4), only screen and (min-device-pixel-ratio: 1.2), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.2dppx) {
-            background-image: url($icon-location-2x);
-        }
-
-        // Retina @3x device
-        @media only screen and (-webkit-min-device-pixel-ratio: 3), only screen and (min--moz-device-pixel-ratio: 3), only screen and (-o-min-device-pixel-ratio: 3/1), only screen and (min-device-pixel-ratio: 3), only screen and (min-resolution: 288dpi), only screen and (min-resolution: 3dppx) {
-            background-image: url($icon-location-3x);
-        }
-
+        text-indent: -9999em;
+        margin-top: 5px;
+    }
+    
+    #social-linkedin {
+        background-image: url(/blog/img/linkedin-24-black.png);
+        //background-color: #007fb1;
+        
         &:hover {
-            color: $link-colour;
+            border: 1px solid black;
+            //background-image: url(/blog/img/linkedin-24-black.png);
+            //background-color: white;
         }
     }
+
+    #social-facebook {
+        background-image: url(/blog/img/facebook-24-black.png);
+        //background-color: #3B5998;
+        
+        &:hover {
+            border: 1px solid black;
+            //background-image: url(/blog/img/facebook-24-black.png);
+            //background-color: white;
+        }
+    }    
+
+    #social-twitter {
+        background-image: url(/blog/img/twitter-24-black.png);
+        //background-color: #00ACED;
+        
+        &:hover {
+            border: 1px solid black;
+            //background-image: url(/blog/img/twitter-24-black.png);
+            //background-color: white;
+        }
+    }  
+
+    #social-googleplus {
+        background-image: url(/blog/img/googleplus-24-black.png);
+        //background-color: #D14836;
+        
+        &:hover {
+            border: 1px solid black;
+            //background-image: url(/blog/img/googleplus-24-black.png);
+            //background-color: white;
+        }
+    } 
+    
 }

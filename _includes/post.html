@@ -1,6 +1,6 @@
 <section class="post">
     <div class="post-header post-header--dw">
-        <a href="{{ site.baseurl }}{{ include.post.url }}"><h3 class="post-header-title">{{ include.post.title }}</h3></a>
+        <a href="{{ site.baseurl }}{{ post.permalink }}"><h3 class="post-header-title">{{ include.post.title }}</h3></a>
         <h4 class="post-header-date"><span class="ordinal">{{ include.post.date | date: "%e" }}</span> {{ include.post.date | date: "%B &#8217;%y" }}</h4>
     </div>
     <div class="post-body">
@@ -12,6 +12,19 @@
               <li class="post-footer-tag">#{{ tag }}</li>
             {% endfor %}
         </ul>
-        <a href="https://www.google.com/maps/search/{{ include.post.location }}" target="_blank" class="post-footer-location">{{ include.post.location }}</a>
+        <br>
+        {% assign tagStr = '' %}
+        {% for tag in post.tags %}
+            {% capture tagStr %}{{ tagStr }},{{ tag }}{% endcapture %}
+        {% endfor %}
+        <div class="social-share">
+            <a class="social-share-element" id="social-linkedin" href="http://www.linkedin.com/shareArticle?mini=true&title={{ page.title }}&url={{ site.url }}{{ post.permalink }}&source={{ site.url }}" target="_blank" title="Share this post on LinkedIn"></a>
+            &nbsp;
+            <a class="social-share-element" id="social-facebook" href="https://www.facebook.com/sharer/sharer.php?t={{ page.title }}&u={{ site.url }}{{ post.permalink }}" target="_blank" title="Share this post on Facebook"></a>
+            &nbsp;
+            <a class="social-share-element" id="social-twitter" href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ post.permalink }}&hashtags={{ tagStr }}" target="_blank" title="Share this post on Twitter"></a>    
+            &nbsp;
+            <a class="social-share-element" id="social-googleplus" href="https://plus.google.com/share?url={{ site.url }}{{ post.permalink }}" target="_blank" title="Share this post on Google Plus"></a>
+        </div> 
     </div>
 </section>

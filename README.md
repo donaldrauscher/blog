@@ -9,10 +9,6 @@ In addition to being devilishly handsome, it is responsive down to mobile and ha
 
 It has been designed to be an easy layout to modify for your own blog. See the installation instructions below to get started.
 
-### Demo
-
-See the theme in action [here](http://travelog.io/).
-
 ### Installation
 
 - Install Jekyll: `gem install jekyll`
