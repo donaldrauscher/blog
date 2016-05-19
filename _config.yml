@@ -3,8 +3,8 @@ title: Instalytics
 subtitle: "Journal of Donald Rauscher"
 email: donald.rauscher@gmail.com
 description: "Data scientist, consultant, and aspiring entrepreneur"
-baseurl: "/blog"
-url: "http://donaldrauscher.github.io/blog"
+baseurl: ""
+url: "http://donaldrauscher.com"
 github_username: "donaldrauscher"
 linkedin_username: "donaldrauscher"
 delicious_username: "djr45"
