@@ -16,6 +16,7 @@ permalink: pretty
 
 # Pagination
 paginate: 5
+gems: [jekyll-paginate, jekyll-textile-converter]
 
 # Sass
 sass:

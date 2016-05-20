@@ -14,7 +14,7 @@ Shiny has a couple features that I think make it really powerful and useful:
 * <b>Image output rending</b>: Because Shiny can output images to the browser (in addition to simple text and HTML), you can use plotting systems such as ["ggplot2":http://ggplot2.org/] to generate graphs and visual outputs for your app.  You can also use D3 to create data visualizations (see link below).
 
 I put together a Shiny app (["https://github.com/donaldrauscher/treeseg":https://github.com/donaldrauscher/treeseg]) that creates objective-based segmentations.  I built the segmentation trees with a package called ["Rpart":http://cran.r-project.org/web/packages/rpart/index.html].  You can toggle which variables you want to use to build the tree.  The app also profiles the segmentation for you, conducting stat tests on all variables in the data (both numeric and categorical).  The app will allow you to rapidly prototype segmentation solutions.
-!/blog/img/treeseg.png!
+!/img/treeseg.png!
 
 Cheers.
 
