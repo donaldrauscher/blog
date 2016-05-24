@@ -11,14 +11,14 @@ delicious_username: "djr45"
 permalink: none
 
 # Build settings
-markdown: kramdown
+markdown: redcarpet
 permalink: pretty
 
 # Pagination
 paginate: 5
 
 # Gems
-# gems: [jekyll-paginate, jekyll-textile-converter]
+# gems: [jekyll-paginate]
 
 # Sass
 sass:
