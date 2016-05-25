@@ -11,7 +11,7 @@ delicious_username: "djr45"
 permalink: none
 
 # Build settings
-markdown: redcarpet
+markdown: kramdown
 permalink: pretty
 
 # Pagination
