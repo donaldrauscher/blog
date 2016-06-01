@@ -11,12 +11,12 @@ For [this week's Riddler](http://fivethirtyeight.com/features/can-you-solve-the-
 
 Interdivision games are pretty easy to deal with because the outcomes of each team's interdivision games are independent of one another. If all 162 games were interdivision, the answer would be pretty straightforward (code is in R):
 
-{% highlight r %}
+``` r
 > cdf <- (pbinom(1:162, 162, 0.5))^5
 > pmf <- cdf - c(0, head(cdf, -1))
 > sum(1:162 * pmf)
 [1] 88.39431
-{% endhighlight %}
+```
 
 Unfortunately, we don't have independence for intradivision games.  We can think of intradivision games as a series of consecutive round robins.  In each round robin, there are 10 games, and each team plays in 4 of those games.  I couldn't find a neat way to express the win distribution of the divisional leader(s), so I kind of brute-forced it with R.  I wrote some code to calculate an exhaustive state space with each state's corresponding probability after the 190 intradivision games.  Because all the teams are evenly matched, each state can be defined in order from most wins to least wins, greatly reducing the size of our state space.  So we define each state <span class="inline-equation" data-expr="s = \left(t_{1},t_{2},t_{3},t_{4},t_{5}\right)"></span> such that <span class="inline-equation" data-expr="t_{1} \geq t_{2} \geq t_{3} \geq t_{4} \geq t_{5}"></span>.  Even with this trick, there were 157,470 states in my state space!
 
