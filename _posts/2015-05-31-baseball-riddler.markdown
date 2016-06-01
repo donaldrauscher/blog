@@ -11,7 +11,7 @@ For [this week's Riddler](http://fivethirtyeight.com/features/can-you-solve-the-
 
 Interdivision games are pretty easy to deal with because the outcomes of each team's interdivision games are independent of one another. If all 162 games were interdivision, the answer would be pretty straightforward (code is in R):
 
-``` r
+```R
 > cdf <- (pbinom(1:162, 162, 0.5))^5
 > pmf <- cdf - c(0, head(cdf, -1))
 > sum(1:162 * pmf)
