@@ -9,6 +9,7 @@ github_username: "donaldrauscher"
 linkedin_username: "donaldrauscher"
 delicious_username: "djr45"
 permalink: none
+# host: 0.0.0.0
 
 # Build settings
 markdown: kramdown
