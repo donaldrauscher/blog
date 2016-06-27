@@ -30,7 +30,7 @@ The robot's first cut will create 2 pizza slices.  The robot's second cut will c
 </tr>
 </table>
 
-Next, I integrated over the entire state space to get the probability of each of these outcomes.  The state space for the second cut (after 1 cut has been made) is very easy to define; we only need 1 variable (x) to specify the size of each of the two slices.  The state space for the third cut (after 2 cuts have been made) is more challenging; we need 3 variables to define the space (x, y, and z). Each integral is multipled by the number of circular permutations; in the case of the third cut, this is 4 points, so (4 - 1)! = 6.
+Next, I integrated over the entire state space to get the probability of each of these outcomes.  The state space for the second cut (after 1 cut has been made) is very easy to define; we only need 1 variable (x) to specify the size of each of the two slices.  The state space for the third cut (after 2 cuts have been made) is more challenging; we need 3 variables to define the space (x, y, and z). Each integral is multipled by the number of [circular permutations](http://mathworld.wolfram.com/CircularPermutation.html); in the case of the third cut, there are 4 points, so (4 - 1)! = 6.
 
 For that second cut:
 {% raw %}
