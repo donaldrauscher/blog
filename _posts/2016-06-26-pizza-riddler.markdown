@@ -34,14 +34,14 @@ Next, I integrated over the entire state space to get the probability of each of
 
 For that second cut:
 {% raw %}
-<div class="inline-equation" data-expr="(A, B) = \left{ \left( x, 1 - x \right) : 0 \leq x \leq 1 \right}"></div>
+<div class="inline-equation" data-expr="(A, B) = \left\{ \left( x, 1 - x \right) : 0 \leq x \leq 1 \right\}"></div>
 <div class="inline-equation" data-expr="P(S_{2} = 3) = \int_{0}^{1} x^2 + \left( 1 - x \right) ^2 dx = \frac{2}{3}"></div>
 <div class="inline-equation" data-expr="P(S_{2} = 4) = \int_{0}^{1} 2x \left( 1 - x \right) dx = \frac{1}{3}"></div>
 {% endraw %}
 
 For that third cut:
 {% raw %}
-<div class="inline-equation" data-expr="(A, B, C, D) = \left{ \left( z, y - z, x - y, 1 - x \right) : 0 \leq z \leq y \leq x \leq 1 \right}"></div>
+<div class="inline-equation" data-expr="(A, B, C, D) = \left\{ \left( z, y - z, x - y, 1 - x \right) : 0 \leq z \leq y \leq x \leq 1 \right\}"></div>
 <div class="inline-equation" data-expr="P(S_{3} = 4 | S_{2} = 3) = 3! \int_{0}^{1} \int_{z}^{1} \int_{y}^{1} z^2 + \left( y - z \right) ^2 + \left( x - y \right) ^2 + \left( 1 - x \right) ^2 + 2 \left( y - z \right) \left( 1 - x \right) \,dx\,dy\,dz = \frac{1}{2}"></div>
 <div class="inline-equation" data-expr="P(S_{3} = 5 | S_{2} = 3) = 3! \int_{0}^{1} \int_{z}^{1} \int_{y}^{1} 2 \left( z \left( y - z \right) + \left( x - y \right) \left( y - z \right) + \left( 1 - x \right) \left( x - y \right) + z \left( 1 - x \right) \right) \,dx\,dy\,dz = \frac{2}{5}"></div>
 <div class="inline-equation" data-expr="P(S_{3} = 6 | S_{2} = 3) = 3! \int_{0}^{1} \int_{z}^{1} \int_{y}^{1} 2 z \left( x - y \right) \,dx\,dy\,dz = \frac{1}{10}"></div>
