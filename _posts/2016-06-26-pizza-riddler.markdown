@@ -30,7 +30,7 @@ The robot's first cut will create 2 pizza slices.  The robot's second cut will c
 </tr>
 </table>
 
-Next, I integrated over the entire state space to get the probability of each of these outcomes.  The state space for the second cut (after 1 cut has been made) is very easy to define; we only need 1 variable (x) to specify the size of each of the two slices.  The state space for the third cut (after 2 cuts have been made) is more challenging; we need 3 variables to define the space (x, y, and z). 
+Next, I integrated over the entire state space to get the probability of each of these outcomes.  The state space for the second cut (after 1 cut has been made) is very easy to define; we only need 1 variable (x) to specify the size of each of the two slices.  The state space for the third cut (after 2 cuts have been made) is more challenging; we need 3 variables to define the space (x, y, and z). Each integral is multipled by the number of circular permutations; in the case of the third cut, this is 4 points, so (4 - 1)! = 6.
 
 For that second cut:
 {% raw %}
@@ -41,7 +41,7 @@ For that second cut:
 
 For that third cut:
 {% raw %}
-<div class="inline-equation" data-expr="A = z; B = y - z; C = x - y; D = 1 - x; 0 \leq z \leq y \leq x 1"></div>
+<div class="inline-equation" data-expr="A = z; B = y - z; C = x - y; D = 1 - x; 0 \leq z \leq y \leq x \leq 1"></div>
 <div class="inline-equation" data-expr="P(S_{3} = 4 | S_{2} = 3) = 3! \int_{0}^{1} \int_{z}^{1} \int_{y}^{1} z^2 + \left( y - z \right) ^2 + \left( x - y \right) ^2 + \left( 1 - x \right) ^2 + 2 \left( y - z \right) \left( 1 - x \right) \,dx\,dy\,dz = \frac{1}{2}"></div>
 <div class="inline-equation" data-expr="P(S_{3} = 5 | S_{2} = 3) = 3! \int_{0}^{1} \int_{z}^{1} \int_{y}^{1} 2 \left( z \left( y - z \right) + \left( x - y \right) \left( y - z \right) \left( 1 - x \right) \left( x - y \right) z \left( 1 - x \right) \right) \,dx\,dy\,dz = \frac{2}{5}"></div>
 <div class="inline-equation" data-expr="P(S_{3} = 6 | S_{2} = 3) = 3! \int_{0}^{1} \int_{z}^{1} \int_{y}^{1} 2 z \left( x - y \right) \,dx\,dy\,dz = \frac{1}{10}"></div>
