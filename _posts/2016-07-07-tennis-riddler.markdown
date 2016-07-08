@@ -13,7 +13,7 @@ If we focus exclusively on that final game, there is a scenario which gives us a
 
 {% raw %}
 <div class="equation" data-expr="P\left( W \right) = p + pq + pq^2 + pq^3 + pq^4 + pq^5 + q^6 \left( p^2 + \left( 2pq \right)p^2 + \left( 2pq \right)^2 p^2 + ... \right)"></div>
-<div class="equation" data-expr="= p + pq + pq^2 + pq^3 + pq^4 + pq^5 + p^2 q^6 \frac{1}{\left( 1 - 2pq \right)} = 5.86\%"></div>
+<div class="equation" data-expr="= p + pq + pq^2 + pq^3 + pq^4 + pq^5 + q^6 \frac{p^2}{\left( 1 - 2pq \right)} = 5.86\%"></div>
 {% endraw %}
 
 <img src="/img/tennis-riddler.jpeg" style="display:block; margin-left:auto; margin-right:auto;">
