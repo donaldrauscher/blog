@@ -11,7 +11,7 @@ The challenging part of this problem was creating an exhaustive state-space of b
 
 <img src="/img/laser-riddler.jpg" style="display:block; margin-left:auto; margin-right:auto; width: 500px;">
 
-```R
+``` R
 library(ggplot2)
 
 # make the pentagon
@@ -52,4 +52,5 @@ bisectors <- do.call(rbind, lapply(1:5, function(i){
 ggplot() + 
   geom_path(aes(x = pentagon$x, y = pentagon$y)) + 
   geom_path(aes(x = bisectors$x, y = bisectors$y, group = bisectors$piece), colour = "red")
+
 ```
