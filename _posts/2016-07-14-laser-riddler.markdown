@@ -7,7 +7,7 @@ tags: 538, fivethirtyeight, riddler
 permalink: /laser-riddler
 ---
 
-The challenging part of this problem was creating an exhaustive state-space of bisectors.  Odd-numbered polygons are a real pain.  I started with a known bisector: a line that goes through one point and intersects the mid-point of the opposite side.  If we shift the line slightly on one side, how much will we need to shift it on the opposing side (a rotation) to keep the area on either side equal?  A little trig helps us figure this out.  Interestingly, these bisectors don't always intersect the centroid.  Because of this, we see an interesting, star-shaped hot spot forms in the middle of the shape.  We can minimize our chances of getting hit if we stand at the point point of any one of the outer edges of the building.  
+The challenging part of this problem was creating an exhaustive state-space of bisectors.  Odd-numbered polygons are a real pain.  I started with a known bisector: a line that goes through one point and intersects the mid-point of the opposite side.  If we shift the line slightly on one side, how much will we need to shift it on the opposing side (a rotation) to keep the area on either side equal?  A little trig helps us figure this out.  Interestingly, these bisectors don't always intersect the centroid.  Because of this, an interesting, star-shaped hot spot forms in the middle of the shape.  We can minimize our chances of getting hit if we stand at the mid point of one of the outer walls of the building, which makes intuitive sense.  
 
 <img src="/img/laser-riddler.jpg" style="display:block; margin-left:auto; margin-right:auto; width: 500px;">
 
