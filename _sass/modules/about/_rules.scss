@@ -9,6 +9,10 @@
         align-items: center;
         justify-content: center;
     }
+    
+    .about ul {
+	list-style-type: none;
+    }
 
     .about-wrap {
         display: table-cell;
