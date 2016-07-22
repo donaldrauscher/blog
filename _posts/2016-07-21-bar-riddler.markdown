@@ -24,6 +24,7 @@ This week’s [Riddler](http://fivethirtyeight.com/features/how-long-will-you-be
 Once we compute the fundamental matrix (N), calculating the expected number of steps until absorption is fairly [easy](https://en.wikipedia.org/wiki/Absorbing_Markov_chain).  Plugging in a few different values of X and Y, a trend emerges: the expected number of coin flips is simply <span style="text-decoration: underline;">X * Y</span>.  Another wonderfully simple Riddler solution!
 
 My R code:
+
 ``` R
 X <- 4
 Y <- 13
@@ -49,7 +50,4 @@ N <- solve(diag(num_transient_states) - Q)
 t <- N %*% matrix(1, num_transient_states, 1)
 print(t[X])
 
-# absorbing probabilities
-B <- N %*% R
-print(B[X,])
 ```
