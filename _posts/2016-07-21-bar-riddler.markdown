@@ -1,9 +1,8 @@
 ---
-published: true
 layout: post
 title: '538 Riddler: A Variation of the Drunkard''s Walk ... In a Bar'
-date: {}
-categories: '538, fivethirtyeight, riddler'
+date:   2016-07-14
+categories: 538, fivethirtyeight, riddler
 tags: '538, fivethirtyeight, riddler, probability'
 permalink: /bar-riddler
 ---
