@@ -27,24 +27,24 @@ X <- 4
 Y <- 13
 
 # build Q
-num_transient_states <- X + Y - 1
-Q <- matrix(0.5, num_transient_states, num_transient_states)
-tri <- cbind(rbind(FALSE, lower.tri(matrix(nrow=num_transient_states-1,ncol=num_transient_states-1))), FALSE)
+n_transient_state <- X + Y - 1
+Q <- matrix(0.5, n_transient_state, n_transient_state)
+tri <- cbind(rbind(FALSE, lower.tri(matrix(nrow=n_transient_state-1,ncol=n_transient_state-1))), FALSE)
 Q[tri] <- 0; Q[t(tri)] <- 0; diag(Q) <- 0
 
 # build R
-R <- matrix(data = 0, nrow = num_transient_states, ncol = 2)
+R <- matrix(data = 0, nrow = n_transient_state, ncol = 2)
 R[1,1] <- 0.5
-R[num_transient_states,2] <- 0.5
+R[n_transient_state,2] <- 0.5
 
 # put together into P
-P <- rbind(cbind(Q, R), cbind(matrix(0, 2, num_transient_states), diag(2)))
+P <- rbind(cbind(Q, R), cbind(matrix(0, 2, n_transient_state), diag(2)))
 
 # fundamental matrix
-N <- solve(diag(num_transient_states) - Q)
+N <- solve(diag(n_transient_state) - Q)
 
 # expected number of steps to absorbtion
-t <- N %*% matrix(1, num_transient_states, 1)
+t <- N %*% matrix(1, n_transient_state, 1)
 print(t[X])
 
 ```
