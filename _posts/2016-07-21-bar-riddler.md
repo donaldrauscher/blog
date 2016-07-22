@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 layout: post
 title: '538 Riddler: A Variation of the Drunkard''s Walk ... In a Bar'
 date: 2015-07-21T00:00:00.000Z
@@ -57,4 +57,3 @@ print(t[X])
 B <- N %*% R
 print(B[X,])
 ```
-
