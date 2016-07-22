@@ -2,7 +2,7 @@
 published: true
 layout: post
 title: '538 Riddler: A Variation of the Drunkard''s Walk ... In a Bar'
-date: 2016-07-21T00:00:00.000Z
+date: {}
 categories: '538, fivethirtyeight, riddler'
 tags: '538, fivethirtyeight, riddler, probability'
 permalink: /bar-riddler
@@ -30,13 +30,9 @@ Y <- 13
 
 # build Q
 num_transient_states <- X + Y - 1
-Q <- matrix(data = 0, nrow = num_transient_states, ncol = num_transient_states)
-for (i in 1:num_transient_states){
-  if (i > 1){
-    Q[i, i-1] <- 0.5
-  }
-  Q[i-1, i] <- 0.5
-}
+Q <- matrix(0.5, num_transient_states, num_transient_states)
+tri <- cbind(rbind(FALSE, lower.tri(matrix(nrow=num_transient_states-1,ncol=num_transient_states-1))), FALSE)
+Q[tri] <- 0; Q[t(tri)] <- 0; diag(Q) <- 0
 
 # build R
 R <- matrix(data = 0, nrow = num_transient_states, ncol = 2)
