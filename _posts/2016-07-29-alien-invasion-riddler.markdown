@@ -7,12 +7,12 @@ permalink: /alien-invasion
 ---
 This [week's Ridder](http://fivethirtyeight.com/features/solve-the-puzzle-stop-the-alien-invasion/) was the first one that I got wrong! I never really felt confident in my answer, thus no post.  In the end, I did not model random points on the surface of the sphere correctly.  A [good link](http://mathworld.wolfram.com/SpherePointPicking.html) supplied by the 538 folks demonstrates how to do this correctly.
 
-In retrospect, there are two random variables: <span class="inline-equation" expr="\phi_{1}"></span> and <span class="inline-equation" expr="\phi_{2}"></span>.  The former represents the angular distance between the two alien ships.  The latter represents the angular distance between the defender and the midpoint of the two alient ships.  These two random variables have the following probability distributions:
+In retrospect, there are two random variables: <span class="inline-equation" data-expr="\phi_{1}"></span> and <span class="inline-equation" data-expr="\phi_{2}"></span>.  The former represents the angular distance between the two alien ships.  The latter represents the angular distance between the defender and the midpoint of the two alient ships.  These two random variables have the following probability distributions:
 {% raw %}
-<div class="equation" expr="f \left( \phi_{1} \right) = sin \left( 2\phi_{1} \right) \quad \forall \phi_{1} \in \left[ 0, \frac{ \pi }{2} \right]; \quad f \left( \phi_{2} \right) = \frac{1}{2} sin \left( \phi_{2} \right) \quad \forall \phi_{2} \in \left[ 0, \pi \right]"></div>
+<div class="equation" data-expr="f \left( \phi_{1} \right) = sin \left( 2\phi_{1} \right) \quad \forall \phi_{1} \in \left[ 0, \frac{ \pi }{2} \right]; \quad f \left( \phi_{2} \right) = \frac{1}{2} sin \left( \phi_{2} \right) \quad \forall \phi_{2} \in \left[ 0, \pi \right]"></div>
 {% endraw %}
 
 These are independent, so we can simply combine them into a joint distribution and integrate to give us the probability that the planet is defended:
 {% raw %}
-<div class="equation" expr="P \left( \phi_{2} < 20 \phi_{1} \right) = \int_{0}^{\pi} \int_{\frac{\phi_{2}}{20}}^{\frac{\pi}{2}} \frac{1}{2} sin \left( 2\phi_{1} \right) sin \left( \phi_{2} \right) \,d\phi_{1} \,d\phi_{2} = 99.3\%"></div>
+<div class="equation" data-expr="P \left( \phi_{2} < 20 \phi_{1} \right) = \int_{0}^{\pi} \int_{\frac{\phi_{2}}{20}}^{\frac{\pi}{2}} \frac{1}{2} sin \left( 2\phi_{1} \right) sin \left( \phi_{2} \right) \,d\phi_{1} \,d\phi_{2} = 99.3\%"></div>
 {% endraw %}
