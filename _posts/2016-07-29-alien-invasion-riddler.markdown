@@ -1,7 +1,7 @@
 ---
-published: false
+published: true
 layout: post
-date: 2016-07-29T00:00:00.000Z
+date: {}
 categories: '538, fivethirtyeight, riddler'
 tags: '538, fivethirtyeight, riddler, geometry'
 permalink: /alien-invasion
