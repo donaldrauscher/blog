@@ -1,5 +1,6 @@
 ---
 layout: post
+title: '538 Riddler: Defending Against an Alien Invasion'
 date: 2016-07-29
 categories: 538, fivethirtyeight, riddler
 tags: 538, fivethirtyeight, riddler, geometry
@@ -7,7 +8,7 @@ permalink: /alien-invasion
 ---
 This [week's Ridder](http://fivethirtyeight.com/features/solve-the-puzzle-stop-the-alien-invasion/) was the first one that I got wrong! I never really felt confident in my answer, thus no post.  In the end, I did not model random points on the surface of the sphere correctly.  A [good link](http://mathworld.wolfram.com/SpherePointPicking.html) supplied by the 538 folks demonstrates how to do this correctly.
 
-In retrospect, there are two random variables: <span class="inline-equation" data-expr="\phi_{1}"></span> and <span class="inline-equation" data-expr="\phi_{2}"></span>.  The former represents the angular distance between the two alien ships.  The latter represents the angular distance between the defender and the midpoint of the two alient ships.  These two random variables have the following probability distributions:
+In retrospect, there are two random variables: <span class="inline-equation" data-expr="\phi_{1}"></span> and <span class="inline-equation" data-expr="\phi_{2}"></span>.  The former represents the angular distance between the two alien ships.  The latter represents the angular distance between the defender and the midpoint of the two alien ships.  These two random variables have the following probability distributions:
 {% raw %}
 <div class="equation" data-expr="f \left( \phi_{1} \right) = sin \left( 2\phi_{1} \right) \quad \forall \phi_{1} \in \left[ 0, \frac{ \pi }{2} \right]; \quad f \left( \phi_{2} \right) = \frac{1}{2} sin \left( \phi_{2} \right) \quad \forall \phi_{2} \in \left[ 0, \pi \right]"></div>
 {% endraw %}
