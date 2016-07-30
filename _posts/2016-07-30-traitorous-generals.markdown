@@ -1,9 +1,8 @@
 ---
-published: false
 layout: post
-date: 2016-07-30T00:00:00.000Z
-categories: '538, fivethirtyeight, riddler'
-tags: '538, fivethirtyeight, riddler, logic'
+date: 2016-07-30
+categories: 538, fivethirtyeight, riddler
+tags: 538, fivethirtyeight, riddler, logic
 permalink: /traitorous-generals
 ---
 
