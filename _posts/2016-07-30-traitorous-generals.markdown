@@ -7,8 +7,10 @@ permalink: /traitorous-generals
 ---
 
 Let's start by picking one general at random.  We can determine this specific general's loyalty by polling the other generals.  As we go around the circle, there are two stop conditions:
-1. The selected general receives <span class="inline-equation" data-expr="\left( \lceil N/2 \rceil \right)-1"></span> loyal votes
-2. The selected general receives <span class="inline-equation" data-expr="\left( \lceil N/2 \rceil \right)"></span> traitorous votes
+<ol>
+<li>The selected general receives <span class="inline-equation" data-expr="\left( \lceil N/2 \rceil \right)-1"></span> loyal votes</li>
+<li>The selected general receives <span class="inline-equation" data-expr="\left( \lceil N/2 \rceil \right)"></span> traitorous votes</li>
+</ol>
 If [1] happens, we know the selected general to be loyal.  If [2] happens, we know the selected general to be traitorous.  This works because we know that there is a majority of loyal generals and that all loyal generals are honest 100% of the time.  If, during this inquisition, we identify a traitorous general, then we incarcerate him (or perhaps a more sinister punishment) and pick a new general to evaluate.  Through this process, we are guaranteed to find a loyal general. How many questions will it take though? 
 
 How far around the circle we go is a function of how the traitors choose to behave.  This requires a little explanation.  Let's say we pick a traitorous general for our first inquisition.  All the other traitors shouldn't try to vouch for him because (1) it will not save him and (2) it will doom them individually.  We're going to get to the right answer one way or the other, and anyone who said the traitor was not a traitor will be outed along with him.  If our traitors choose the "band together" route, this whole thing will be over in a max of <span class="inline-equation" data-expr="2 \left( \lceil N/2 \rceil - 1 \right)"></span> votes (depending on who we ask first), and there will be no need for any subsequent rounds since we'll know exactly who is a traitor and who is loyal.  If our traitors are self-preservational, this round will be over in exactly <span class="inline-equation" data-expr="\left( \lceil N/2 \rceil \right)-1"></span> questions. 
