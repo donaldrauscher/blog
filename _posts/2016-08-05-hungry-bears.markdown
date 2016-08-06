@@ -1,11 +1,10 @@
 ---
 layout: post
 title: '538 Riddler: Hungry Bears'
-date: {}
-categories: '538, fivethirtyeight, riddler'
-tags: '538, fivethirtyeight, riddler, probability'
+date: 2016-08-05
+categories: 538, fivethirtyeight, riddler
+tags: 538, fivethirtyeight, riddler, probability
 permalink: /hungry-bears
-published: true
 ---
 My first intuition after reading [this problem](http://fivethirtyeight.com/features/should-the-grizzly-bear-eat-the-salmon/) was "why would the bear ever reject the first fish?" If the first fish is big, then it makes sense to eat it; there are no guarantees the next fish will be as big.  If the first fish is small, then eat it because the next fish is likely to be bigger, meaning we can eat it too. Some simple math confirms this. Let's say the first fish is of <span class="inline-equation" data-expr="x"></span> size. The probability that we eat the next fish is <span class="inline-equation" data-expr="\left( 1-x \right)"></span> and the expected size of this fish is <span class="inline-equation" data-expr="\frac{\left( 1+x \right)}{2}"></span>.  The total meal size if we eat the first fish is <span class="inline-equation" data-expr="x + \frac{\left( 1-x \right)\left( 1+x \right)}{2}"></span> is always greater than or equal <span class="inline-equation" data-expr="\frac{1}{2}"></span>, the expected meal size if we wait for the second fish.  So if we're the bear, our optimal strategy is simple: eat whatever we see.
 
