@@ -12,7 +12,7 @@ Given our rather simple strategy, let's come up with a generalized expression fo
 {% raw %}
 <div class="equation" data-expr="M_{N} = \sum_{i=1}^{N} F_{i} * I_{\left\{ F_{i} > max \left( F_{1}, \dots , F_{i-1} \right) \right\}}; F_{i} \sim U(0,1)"></div>
 <div class="equation" data-expr="E[M_{N}] = \sum_{i=1}^{N} \int_{0}^{1} \int_{l}^{1} f * f_{L_{i}}(l) \,df \,dl"></div>
-<div class="equation" data-expr="L_{i} \sim max \left( F_{1}, \dots , F_{i} \right); F_{L_{i}}(x) = x^{i} \rightarrow f_{L_{i}}(x) = i\,x^{i-1}"></div>
+<div class="equation" data-expr="L_{i} \sim max \left( F_{1}, ... , F_{i} \right); F_{L_{i}}(x) = x^{i} \rightarrow f_{L_{i}}(x) = i\,x^{i-1}"></div>
 <div class="equation" data-expr="= \sum_{i=1}^{N} \int_{0}^{1} \left( \frac{1}{2} - \frac{1}{2} l^{2} \right)\left( i-1 \right ) l^{i-2} \,dl"></div>
 <div class="equation" data-expr="= \sum_{i=1}^{N} \frac{1}{i+1}"></div>
 {% endraw %}
