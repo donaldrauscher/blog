@@ -1,10 +1,11 @@
 ---
 layout: post
 title: '538 Riddler: Hungry Bears'
-date: 2016-08-05
-categories: 538, fivethirtyeight, riddler
-tags: 538, fivethirtyeight, riddler, probability
+date: {}
+categories: '538, fivethirtyeight, riddler'
+tags: '538, fivethirtyeight, riddler, probability'
 permalink: /hungry-bears
+published: true
 ---
 My first intuition after reading [this problem](http://fivethirtyeight.com/features/should-the-grizzly-bear-eat-the-salmon/) was "why would the bear ever reject the first fish?" If the first fish is big, then it makes sense to eat it; there are no guarantees the next fish will be as big.  If the first fish is small, then eat it because the next fish is likely to be bigger, meaning we can eat it too. Some simple math confirms this. Let's say the first fish is of <span class="inline-equation" data-expr="x"></span> size. The probability that we eat the next fish is <span class="inline-equation" data-expr="\left( 1-x \right)"></span> and the expected size of this fish is <span class="inline-equation" data-expr="\frac{\left( 1+x \right)}{2}"></span>.  The total meal size if we eat the first fish is <span class="inline-equation" data-expr="x + \frac{\left( 1-x \right)\left( 1+x \right)}{2}"></span> is always greater than or equal <span class="inline-equation" data-expr="\frac{1}{2}"></span>, the expected meal size if we wait for the second fish.  So if we're the bear, our optimal strategy is simple: eat whatever we see.
 
@@ -17,4 +18,4 @@ Given our rather simple strategy, let's come up with a generalized expression fo
 <div class="equation" data-expr="= \sum_{i=1}^{N} \frac{1}{i+1}"></div>
 {% endraw %}
 
-This is the [harmonic series](https://en.wikipedia.org/wiki/Harmonic_series_(mathematics) minus 1! In 2 hours, we expect the bear to eat <span class="inline-equation" data-expr="\frac{5}{6}"></span> kilograms. In 3 hours, we expect the bear to eat <span class="inline-equation" data-expr="\frac{13}{12}"></span> kilograms.  Interestingly, the harmonic series is divergent (not a reference to the sterling movie trilogy my wife made me watch).  The amount eaten by the bear does not converge on a value as <span class="inline-equation" data-expr="N"></span> goes to infinity, even though the limit of the nth term is 0.  
+This is the [harmonic series](https://en.wikipedia.org/wiki/Harmonic_series_(mathematics)) minus 1! In 2 hours, we expect the bear to eat <span class="inline-equation" data-expr="\frac{5}{6}"></span> kilograms. In 3 hours, we expect the bear to eat <span class="inline-equation" data-expr="\frac{13}{12}"></span> kilograms.  Interestingly, the harmonic series is divergent (not a reference to the sterling movie trilogy my wife made me watch).  The amount eaten by the bear does not converge on a value as <span class="inline-equation" data-expr="N"></span> goes to infinity, even though the limit of the nth term is 0.
