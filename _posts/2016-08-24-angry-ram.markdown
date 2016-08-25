@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 ---
 Link to [this week's Riddler](http://fivethirtyeight.com/features/can-you-outrun-the-angry-ram-coming-right-for-oh-god/).  Very tricky.  I began by forming two equalities.  Firstly, we know that the derivative of the ram's path will be the slope of the line passing through the ram's current position (x,y) and the location of the fleeing person (1,z). Secondly, by construction, we know that the distance travelled by the ram is some multiple of the distance travelled by the human (z).  These can be expressed as follows:
 <div class="equation" data-expr="Y' = \frac{z-y}{1-x};\quad z=A\int_{0}^{x} \sqrt{1+Y'^{2}} \,dx \quad where \quad A<1"></div>
@@ -22,4 +22,4 @@ Having solved for our two constants, we can use our last condition (that the ram
 
 So the ram must travel about 62% faster to reach the human just as he/she reaches the northeast corner of the pen.  This makes sense.  At the very least, the ram must travel <span class="inline-equation" data-expr="\sqrt{2}-1=41.4\%"></span> faster to reach the human, if crossing the pen along the diagonal.  So the stupid ram needs to be 14% faster than the smart ram.  That's life for ya.
 
-<img src="/img/angry_ram.jpeg" style="display:block; margin-left:auto; margin-right:auto; width:">
+<img src="/img/angry-ram.jpeg" style="display:block; margin-left:auto; margin-right:auto;">
