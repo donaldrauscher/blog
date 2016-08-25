@@ -1,6 +1,12 @@
 ---
-published: true
+layout: post
+title:  "538 Riddler: Escaping the Angry Ram"
+date:   2016-08-24
+categories: 538, fivethirtyeight, riddler
+tags: 538, fivethirtyeight, riddler
+permalink: /angry-ram-riddler
 ---
+
 Link to [this week's Riddler](http://fivethirtyeight.com/features/can-you-outrun-the-angry-ram-coming-right-for-oh-god/).  Very tricky.  I began by forming two equalities.  Firstly, we know that the derivative of the ram's path will be the slope of the line passing through the ram's current position (x,y) and the location of the fleeing person (1,z). Secondly, by construction, we know that the distance travelled by the ram is some multiple of the distance travelled by the human (z).  These can be expressed as follows:
 <div class="equation" data-expr="Y' = \frac{z-y}{1-x};\quad z=A\int_{0}^{x} \sqrt{1+Y'^{2}} \,dx \quad where \quad A<1"></div>
 
