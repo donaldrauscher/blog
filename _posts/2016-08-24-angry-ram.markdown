@@ -11,8 +11,7 @@ Link to [this week's Riddler](http://fivethirtyeight.com/features/can-you-outrun
 <div class="equation" data-expr="Y' = \frac{z-y}{1-x};\quad z=A\int_{0}^{x} \sqrt{1+(Y')^{2}} \,dx \quad where \quad A<1"></div>
 
 Substituting and taking the derivative gives us the following differential equation:
-<div class="equation" data-expr="Y'' \left( 1-x \right) = A \sqrt{1 + (Y')^{2}}"></div>
-<div class="equation" data-expr="[1]\,Y'(0)=0 \quad [2]\,Y(0)=0 \quad [3]\,Y(1)=1"></div>
+<div class="equation" data-expr="Y'' \left( 1-x \right) = A \sqrt{1 + (Y')^{2}} \quad where \quad Y'(0)=0 \,; Y(0)=0 \,; Y(1)=1"></div>
 
 A first iteration yields the following expression for <span class="inline-equation" data-expr="Y'"></span>:
 <div class="equation" data-expr="Y' = sinh \left( -A\,log \left( 1 - x \right) + C_{1} \right)"></div>
