@@ -29,7 +29,7 @@ From this transition matrix we can calculate the absorbing probabilities using t
 {% raw %}
 <div class="equation" data-expr="B = \left( I - Q \right)^{-1} * R"></div>
 {% endraw %}
-Q here represents the transient-to-transient transition matrix (top left 5x5 in above matrix), and R represents the transient-to-absorbing transition matrix (top right 5x5 in the above matrix).  Calculating this out, the probability of winning if the game starts with you is <span class="equation" data-expr="\frac{5}{11} = 45.45\%"></span>.  The probability of winning if the bill starts next to you is <span class="equation" data-expr="\frac{2}{11} = 18.18\%"></span>.  Finally, the probability of winning if the bill starts opposite you (2 people away) is just <span class="equation" data-expr="\frac{1}{11} = 9.09\%"></span>.
+Q here represents the transient-to-transient transition matrix (top left 5x5 in above matrix), and R represents the transient-to-absorbing transition matrix (top right 5x5 in the above matrix).  Calculating this out, the probability of winning if the game starts with you is <span class="inline-equation" data-expr="\frac{5}{11} = 45.45\%"></span>.  The probability of winning if the bill starts next to you is <span class="inline-equation" data-expr="\frac{2}{11} = 18.18\%"></span>.  Finally, the probability of winning if the bill starts opposite you (2 people away) is just <span class="inline-equation" data-expr="\frac{1}{11} = 9.09\%"></span>.
 
 ``` R
 
