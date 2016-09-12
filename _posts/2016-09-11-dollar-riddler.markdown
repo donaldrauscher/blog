@@ -33,22 +33,24 @@ Q here represents the transient-to-transient transition matrix (top left 5x5 in 
 
 ``` R
 
+# number of players
+n <- 5
+
 # build Q
-Q <- matrix(0, 5, 5)
-tri <- lower.tri(matrix(nrow=5,ncol=5))
-tri.inner <- cbind(rbind(FALSE, lower.tri(matrix(nrow=4,ncol=4))), FALSE)
-Q[tri] <- 1/3; Q[tri.inner] <- 0; Q[5,1] <- 1/3
+Q <- matrix(0, n, n)
+tri <- lower.tri(matrix(nrow=n,ncol=n))
+tri.inner <- cbind(rbind(FALSE, lower.tri(matrix(nrow=n-1,ncol=n-1))), FALSE)
+Q[tri] <- 1/3; Q[tri.inner] <- 0; Q[n,1] <- 1/3
 Q[upper.tri(Q)] <- t(Q)[upper.tri(Q)]
 
 # build R
-R <- matrix(0, 5, 5)
+R <- matrix(0, n, n)
 diag(R) <- 1/3
 
 # calculate fundamental matrix
-N <- solve(diag(5) - Q)
+N <- solve(diag(n) - Q)
 
 # calculate absorbing probabilities
 B <- N %*% R
-print(B)
 
 ```
