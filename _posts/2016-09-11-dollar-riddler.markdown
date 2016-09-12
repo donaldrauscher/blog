@@ -52,5 +52,6 @@ N <- solve(diag(n) - Q)
 
 # calculate absorbing probabilities
 B <- N %*% R
+print(B[1,1])
 
 ```
