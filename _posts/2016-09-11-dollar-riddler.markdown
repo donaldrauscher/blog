@@ -76,4 +76,17 @@ Solving this system is straightforward (substitute 1st into 2nd, 2nd into 3rd) a
 \end{cases}"></div>
 {% endraw %}
 
-Here are the solutions to the N=2 through N=10 cases:
+Here are the tediously-derived solutions to the N=2 through N=10 cases:
+| N | <span class="inline-equation" data-expr="P_{0}"></span> |
+| --- | --- |
+| 2 | \frac{3}{5} = 60\% |
+| 3 | \frac{2}{4} = 50\% |
+| 4 | \frac{7}{15} = 46.66667\% |
+| 5 | \frac{5}{11} = 45.45455\% |
+| 6 | \frac{18}{40} = 45\% |
+| 7 | \frac{13}{29} = 44.82759\% |
+| 8 | \frac{47}{105} = 44.7619\% |
+| 9 | \frac{34}{76} = 44.73684\% |
+| 10 | \frac{123}{275} = 44.72727\% |
+
+A few things to note.  As expected, this is clearly converting assymptotically on some value. 
