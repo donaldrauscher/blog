@@ -96,3 +96,9 @@ We can use the Fibonnaci numbers to come up with general expressions for the odd
  & \frac{F_{N-1}+F_{N+1}}{2*F_{N-2}+F_{N+3}} \quad N \, is \, even\\
 \end{cases}"></div>
 {% endraw %}
+
+Using the simpler odd case and some knowledge about the Fibonnaci numbers, we can see what happens as N goes to infinity:
+{% raw %}
+<div class="equation" data-expr="\lim_{x \to \infty } \frac{F_{x+1}}{F_{x}} = \frac{1+\sqrt{5}}{2}"></div>
+<div class="equation" data-expr="\lim_{N \to \infty }\frac{F_{N}}{F_{N-1}+F_{N+1}} = \frac{\frac{F_{N}}{F_{N-1}}}{2+\frac{F_{N}}{F_{N-1}}} = \frac{1}{\sqrt{5}}"></div>
+{% endraw %}
