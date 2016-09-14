@@ -57,7 +57,7 @@ print(B[1,1])
 
 ```
 
-The only issue with this approach is that it is tough to derive from it an expression for the general N case, unless you're unusually gifted at finding matrix inverses. A perhaps more intuitive approach is to set up a system of equations.  Because the problem is symmetrical, we need to solve for just 3 variables, the probabilities of winning with the card 0, 1, and 2 people away.  Furthermore, because each turn is independent, we can relate these probabilities to one another as follows:
+The only issue with this approach is that it is tough to derive from it an expression for the general N case, unless you're unusually gifted at finding matrix inverses, which I am not.  A perhaps more intuitive approach is to set up a system of equations.  Because the problem is symmetrical, we need to solve for just 3 variables, the probabilities of winning with the bill 0, 1, and 2 people away.  Furthermore, because each turn is independent, we can relate these probabilities to one another as follows:
 {% raw %}
 <div class="equation" data-expr="\begin{cases}
  & P_{2} = \frac{1}{3} P_{2} + \frac{1}{3} P_{1} \\ 
@@ -66,7 +66,7 @@ The only issue with this approach is that it is tough to derive from it an expre
 \end{cases}"></div>
 {% endraw %}
 
-Solving this system is straightforward (substitute 1st into 2nd, 2nd into 3rd) and yeilds the same solution as above.  We can also easily extend it for the N=6 case:
+Solving this system is straightforward (substitute 1st into 2nd, 2nd into 3rd) and yields the same solution as above.  We can also easily extend it for the N=6 case:
 {% raw %}
 <div class="equation" data-expr="\begin{cases}
  & P_{3} = \frac{2}{3} P_{2} \\ 
