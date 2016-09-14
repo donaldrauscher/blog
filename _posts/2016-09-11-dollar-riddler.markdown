@@ -89,4 +89,10 @@ Here are the tediously-derived solutions to the N=2 through N=10 cases:
 | 9 | \frac{34}{76} = 44.73684\% |
 | 10 | \frac{123}{275} = 44.72727\% |
 
-A few things to note.  As expected, this is clearly converting assymptotically on some value. 
+We can use the Fibonnaci numbers to come up with general expressions for the odd and even cases:
+{% raw %}
+<div class="equation" data-expr="\begin{cases}
+ & \frac{F_{N}}{F_{N-1}+F_{N+1}} \quad N \, is \, odd \\ 
+ & \frac{F_{N-1}+F_{N+1}}{2*F_{N-2}+F_{N+3}} \quad N \, is \, even\\
+\end{cases}"></div>
+{% endraw %}
