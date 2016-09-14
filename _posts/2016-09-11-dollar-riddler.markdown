@@ -66,7 +66,7 @@ The only issue with this approach is that it is tough to derive from it an expre
 \end{cases}"></div>
 {% endraw %}
 
-Solving this system is straightforward and yeilds the same solution as above.  We can also easily extend it for the N=6 case:
+Solving this system is straightforward (substitute 1st into 2nd, 2nd into 3rd) and yeilds the same solution as above.  We can also easily extend it for the N=6 case:
 {% raw %}
 <div class="equation" data-expr="\begin{cases}
  & P_{3} = \frac{2}{3} P_{2} \\ 
@@ -76,4 +76,4 @@ Solving this system is straightforward and yeilds the same solution as above.  W
 \end{cases}"></div>
 {% endraw %}
 
-After solving a few of these, I got the following trend:
+Here are the solutions to the N=2 through N=10 cases:
