@@ -77,17 +77,18 @@ Solving this system is straightforward (substitute 1st into 2nd, 2nd into 3rd) a
 {% endraw %}
 
 Here are the tediously-derived solutions to the N=2 through N=10 cases:
-| N | <span class="inline-equation" data-expr="P_{0}"></span> |
-| --- | --- |
-| 2 | \frac{3}{5} = 60\% |
-| 3 | \frac{2}{4} = 50\% |
-| 4 | \frac{7}{15} = 46.66667\% |
-| 5 | \frac{5}{11} = 45.45455\% |
-| 6 | \frac{18}{40} = 45\% |
-| 7 | \frac{13}{29} = 44.82759\% |
-| 8 | \frac{47}{105} = 44.7619\% |
-| 9 | \frac{34}{76} = 44.73684\% |
-| 10 | \frac{123}{275} = 44.72727\% |
+<table>
+<tr><th>N</th><th><span class="inline-equation" data-expr="P_{0}"></span></th></tr>
+<tr><td>2</td><td><span class="inline-equation" data-expr="\frac{3}{5} = 60\%"></span></td></tr>
+<tr><td>3</td><td><span class="inline-equation" data-expr="\frac{2}{4} = 50\%"></span></td></tr>
+<tr><td>4</td><td><span class="inline-equation" data-expr="\frac{7}{15} = 46.66667\%"></span></td></tr>
+<tr><td>5</td><td><span class="inline-equation" data-expr="\frac{5}{11} = 45.45455\%"></span></td></tr>
+<tr><td>6</td><td><span class="inline-equation" data-expr="\frac{18}{40} = 45\%"></span></td></tr>
+<tr><td>7</td><td><span class="inline-equation" data-expr="\frac{13}{29} = 44.82759\%"></span></td></tr>
+<tr><td>8</td><td><span class="inline-equation" data-expr="\frac{47}{105} = 44.7619\%"></span></td></tr>
+<tr><td>9</td><td><span class="inline-equation" data-expr="\frac{34}{76} = 44.73684\%"></span></td></tr>
+<tr><td>10</td><td><span class="inline-equation" data-expr="\frac{123}{275} = 44.72727\%"></span></td></tr>
+</table>
 
 We can use the Fibonnaci numbers to come up with general expressions for the odd and even cases:
 {% raw %}
