@@ -1,9 +1,9 @@
 ---
 layout: post
 title: '538 Riddler: Who Gets The $100 Bill?'
-date: {}
-categories: '538, fivethirtyeight, riddler'
-tags: '538, fivethirtyeight, riddler, probability'
+date: 2016-09-11
+categories: 538, fivethirtyeight, riddler
+tags: 538, fivethirtyeight, riddler, probability
 permalink: /dollar-riddler
 published: true
 ---
