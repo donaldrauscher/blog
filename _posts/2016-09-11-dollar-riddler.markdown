@@ -21,7 +21,7 @@ I modelled this week's [Riddler](http://fivethirtyeight.com/features/who-keeps-t
  & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
  & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\ 
  & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\ 
- & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\ 
+ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 
 \end{matrix}
 "></div>
 {% endraw %}
@@ -62,7 +62,7 @@ The only issue with this approach is that it is tough to derive from it an expre
 <div class="equation" data-expr="\begin{cases}
  & P_{2} = \frac{1}{3} P_{2} + \frac{1}{3} P_{1} \\ 
  & P_{1} = \frac{1}{3} P_{2} + \frac{1}{3} P_{0} \\ 
- & P_{0} + 2 P_{1} + 2 P_{2} = 1 \\
+ & P_{0} + 2 P_{1} + 2 P_{2} = 1
 \end{cases}"></div>
 {% endraw %}
 
@@ -72,7 +72,7 @@ Solving this system is straightforward (substitute 1st into 2nd, 2nd into 3rd) a
  & P_{3} = \frac{2}{3} P_{2} \\ 
  & P_{2} = \frac{1}{3} P_{3} + \frac{1}{3} P_{2} \\ 
  & P_{1} = \frac{1}{3} P_{2} + \frac{1}{3} P_{0} \\ 
- & P_{0} + 2 P_{1} + 2 P_{2} + P_{3} = 1 \\
+ & P_{0} + 2 P_{1} + 2 P_{2} + P_{3} = 1
 \end{cases}"></div>
 {% endraw %}
 
@@ -91,10 +91,10 @@ Here are the tediously-derived solutions to the N=2 through N=10 cases:
 
 We can use the Fibonnaci numbers to come up with general expressions for the odd and even cases:
 {% raw %}
-<div class="equation" data-expr="\left\{\begin{matrix}
+<div class="equation" data-expr="\begin{cases}
  \frac{F_{N}}{F_{N-1}+F_{N+1}} \quad N \, is \, odd \\ 
  \frac{F_{N-1}+F_{N+1}}{2*F_{N-2}+F_{N+3}} \quad N \, is \, even 
-\end{matrix}\right."></div>
+\end{cases}"></div>
 {% endraw %}
 
 Using the simpler odd case and some knowledge about the Fibonnaci numbers, we can see what happens as N goes to infinity:
