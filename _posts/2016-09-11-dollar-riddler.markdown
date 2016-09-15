@@ -91,10 +91,10 @@ Here are the tediously-derived solutions to the N=2 through N=10 cases:
 
 We can use the Fibonnaci numbers to come up with general expressions for the odd and even cases:
 {% raw %}
-<div class="equation" data-expr="\begin{cases}
- & \frac{F_{N}}{F_{N-1}+F_{N+1}} \quad N \, is \, odd \\ 
- & \frac{F_{N-1}+F_{N+1}}{2*F_{N-2}+F_{N+3}} \quad N \, is \, even\\
-\end{cases}"></div>
+<div class="equation" data-expr="\left\{\begin{matrix}
+ \frac{F_{N}}{F_{N-1}+F_{N+1}} \quad N \, is \, odd \\ 
+ \frac{F_{N-1}+F_{N+1}}{2*F_{N-2}+F_{N+3}} \quad N \, is \, even \\ 
+\end{matrix}\right."></div>
 {% endraw %}
 
 Using the simpler odd case and some knowledge about the Fibonnaci numbers, we can see what happens as N goes to infinity:
