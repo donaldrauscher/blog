@@ -93,7 +93,7 @@ We can use the Fibonnaci numbers to come up with general expressions for the odd
 {% raw %}
 <div class="equation" data-expr="\left\{\begin{matrix}
  \frac{F_{N}}{F_{N-1}+F_{N+1}} \quad N \, is \, odd \\ 
- \frac{F_{N-1}+F_{N+1}}{2*F_{N-2}+F_{N+3}} \quad N \, is \, even \\ 
+ \frac{F_{N-1}+F_{N+1}}{2*F_{N-2}+F_{N+3}} \quad N \, is \, even 
 \end{matrix}\right."></div>
 {% endraw %}
 
