@@ -14,5 +14,7 @@ From the above graph, we can use a few equations to solve for X:
 {% raw %}
 <div class="equation" data-expr="\left( 4 - x \right)^{2} + \left( X - A \right)^{2} = X^{2} \rightarrow A = X - \sqrt{8X - 16}"></div>
 <div class="equation" data-expr="tan(\theta) = \frac{X - A}{4 - X} = \frac{B - X}{X} \rightarrow B = X \left( 1 + \frac{\sqrt{8X - 16}}{4 - X} \right)"></div>
-<div class="equation" data-expr="A + B = 8 \rightarrow X = 2.70505"></div>
+<div class="equation" data-expr="A + B = 8 \rightarrow X = 2.7054"></div>
 {% endraw %}
+
+We've managed to use <span class="inline-equation" data-expr="\frac{\pi\,2.7054^{2}}{32} ~ 72\%"></span> of the available wood for our circular table.
