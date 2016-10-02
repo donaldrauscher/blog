@@ -17,4 +17,4 @@ From the above graph, we can use a few equations to solve for X:
 <div class="equation" data-expr="A + B = 8 \rightarrow X = 2.7054"></div>
 {% endraw %}
 
-We've managed to use <span class="inline-equation" data-expr="\frac{\pi\,2.7054^{2}}{32} ~ 72\%"></span> of the available wood for our circular table.
+We've managed to use <span class="inline-equation" data-expr="\frac{\pi\,2.7054^{2}}{32} \approx 72\%"></span> of the available wood for our circular table.
