@@ -93,8 +93,8 @@ Here are the tediously-derived solutions to the N=2 through N=10 cases:
 We can use the Fibonnaci numbers to come up with general expressions for the odd and even cases:
 {% raw %}
 <div class="equation" data-expr="P_{0} = \begin{cases}
-\frac{F_{N}}{F_{N-1}+F_{N+1}} & \mbox{if } N\mbox{ is odd} \\
-\frac{F_{N-1}+F_{N+1}}{2*F_{N-2}+F_{N+3}} & \mbox{if } N\mbox{ is even}  
+\frac{F_{N}}{F_{N-1}+F_{N+1}} \\[1em]
+\frac{F_{N-1}+F_{N+1}}{2*F_{N-2}+F_{N+3}}
 \end{cases}"></div>
 {% endraw %}
 
