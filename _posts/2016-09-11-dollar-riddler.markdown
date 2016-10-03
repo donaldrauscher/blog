@@ -94,7 +94,7 @@ We can use the Fibonnaci numbers to come up with general expressions for the odd
 {% raw %}
 <div class="equation" data-expr="P_{0} = \begin{cases} 
  \frac{F_{N}}{F_{N-1}+F_{N+1}} & \text{if } N \text{ is odd} \\[1em] 
- \frac{F_{N-1}+F_{N+1}}{2*F_{N-2}+F_{N+3}} & \text{if } N \text{ is even} 
+ \frac{F_{N-1}+F_{N+1}}{2F_{N-2}+F_{N+3}} & \text{if } N \text{ is even} 
 \end{cases}"></div>
 {% endraw %}
 
