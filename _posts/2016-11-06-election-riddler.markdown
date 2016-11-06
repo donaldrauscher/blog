@@ -7,15 +7,15 @@ tags: 538, fivethirtyeight, riddler, probability
 permalink: /election-riddler
 ---
 
-[This week's Riddler](http://fivethirtyeight.com/features/a-puzzle-will-you-yes-you-decide-the-election/) tasked us with calculating the probability of being the deciding vote in a toss-up election.  For simplicity, I'm going to assume that there are an even number of other voters (an odd number of total voters).  We can model the number of votes for "our" candidate as a binominal random variable.  The probability of a split election is therefore simply:
+[This week's Riddler](http://fivethirtyeight.com/features/a-puzzle-will-you-yes-you-decide-the-election/) tasked us with calculating the probability of being the deciding vote in a toss-up election.  For simplicity, I'm going to assume that there are an even number of other voters (an odd number of total voters).  We can model the number of votes for "our" candidate as a binominal random variable, making the probability of a split election simply:
 {% raw %}
 <div class="equation" data-expr="\binom{N}{N/2} \left( \frac{1}{2} \right)^{N}"></div>
 {% endraw %}
 
-Since there is a nice asymptotic expression for the [central binomial coefficient](https://en.wikipedia.org/wiki/Central_binomial_coefficient), we can derive a simple expression for the probability of being the deciding vote as N goes to infinity:
+Since there is a nice asymptotic expression for the [central binomial coefficient](https://en.wikipedia.org/wiki/Central_binomial_coefficient), we can derive a simple expression for the probability of being the deciding vote for large N:
 {% raw %}
 <div class="equation" data-expr="\lim_{N \to \infty } \binom{2N}{N} \approx \frac{4^{N}}{\sqrt{\pi\,N}} \rightarrow \binom{N}{N/2} \left( \frac{1}{2} \right)^{N} \approx \sqrt{\frac{2}{\pi\,N}} \quad \text{for large N}"></div>
 <div class="equation" data-expr="\lim_{N \to \infty } \binom{N}{N/2} \left( \frac{1}{2} \right)^{N} = 0"></div>
 {% endraw %}
 
-Intuitively, it makes sense that, as N goes to infinity, the probability that we are the deciding vote converges to zero.  After all, a split election among the remaining N votes becomes a smaller and smaller proportion of the available outcomes.
+Intuitively, it makes sense that, as N goes to infinity, the probability that we are the deciding vote converges to zero.  Although technically the most probable individual outcome, a split election becomes a smaller and smaller proportion of the possible outcomes.  Nevertheless, I'm still voting on Tuesday.
