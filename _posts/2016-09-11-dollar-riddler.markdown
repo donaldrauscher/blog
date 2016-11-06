@@ -14,14 +14,14 @@ I modelled this week's [Riddler](http://fivethirtyeight.com/features/who-keeps-t
 \begin{matrix}
  & 0 & \frac{1}{3} & 0 & 0 & \frac{1}{3} & \frac{1}{3} & 0 & 0 & 0 & 0 \\
  & \frac{1}{3} & 0 & \frac{1}{3} & 0 & 0 & 0 & \frac{1}{3} & 0 & 0 & 0 \\
- & 0 & \frac{1}{3} & 0 & \frac{1}{3} & 0 & 0 & 0 & \frac{1}{3} & 0 & 0 \\ 
- & 0 & 0 & \frac{1}{3} & 0 & \frac{1}{3} & 0 & 0 & 0 & \frac{1}{3} & 0 \\ 
- & \frac{1}{3} & 0 & 0 & \frac{1}{3} & 0 & 0 & 0 & 0 & 0 & \frac{1}{3} \\ 
+ & 0 & \frac{1}{3} & 0 & \frac{1}{3} & 0 & 0 & 0 & \frac{1}{3} & 0 & 0 \\
+ & 0 & 0 & \frac{1}{3} & 0 & \frac{1}{3} & 0 & 0 & 0 & \frac{1}{3} & 0 \\
+ & \frac{1}{3} & 0 & 0 & \frac{1}{3} & 0 & 0 & 0 & 0 & 0 & \frac{1}{3} \\
  & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
  & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
- & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\ 
- & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\ 
- & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 
+ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1
 \end{matrix}
 "></div>
 {% endraw %}
@@ -60,8 +60,8 @@ print(B[1,1])
 The only issue with this approach is that it is tough to derive from it an expression for the general N case, unless you're unusually gifted at finding matrix inverses, which I am not.  A perhaps more intuitive approach is to set up a system of equations.  Because the problem is symmetrical, we need to solve for just 3 variables, the probabilities of winning with the bill 0, 1, and 2 people away.  Furthermore, because each turn is independent, we can relate these probabilities to one another as follows:
 {% raw %}
 <div class="equation" data-expr="\begin{cases}
- & P_{2} = \frac{1}{3} P_{2} + \frac{1}{3} P_{1} \\[1em] 
- & P_{1} = \frac{1}{3} P_{2} + \frac{1}{3} P_{0} \\[1em] 
+ & P_{2} = \frac{1}{3} P_{2} + \frac{1}{3} P_{1} \\[1em]
+ & P_{1} = \frac{1}{3} P_{2} + \frac{1}{3} P_{0} \\[1em]
  & P_{0} + 2 P_{1} + 2 P_{2} = 1
 \end{cases}"></div>
 {% endraw %}
@@ -69,15 +69,15 @@ The only issue with this approach is that it is tough to derive from it an expre
 Solving this system is straightforward (substitute 1st into 2nd, 2nd into 3rd) and yields the same solution as above.  We can also easily extend it for the N=6 case:
 {% raw %}
 <div class="equation" data-expr="\begin{cases}
- & P_{3} = \frac{2}{3} P_{2} \\[1em] 
- & P_{2} = \frac{1}{3} P_{3} + \frac{1}{3} P_{2} \\[1em] 
- & P_{1} = \frac{1}{3} P_{2} + \frac{1}{3} P_{0} \\[1em] 
+ & P_{3} = \frac{2}{3} P_{2} \\[1em]
+ & P_{2} = \frac{1}{3} P_{3} + \frac{1}{3} P_{2} \\[1em]
+ & P_{1} = \frac{1}{3} P_{2} + \frac{1}{3} P_{0} \\[1em]
  & P_{0} + 2 P_{1} + 2 P_{2} + P_{3} = 1
 \end{cases}"></div>
 {% endraw %}
 
 Here are the tediously-derived solutions to the N=2 through N=10 cases:
-<table>
+<table class="pretty">
 <tr><th>N</th><th><span class="inline-equation" data-expr="P_{0}"></span></th></tr>
 <tr><td>2</td><td><span class="inline-equation" data-expr="\frac{3}{5} = 60\%"></span></td></tr>
 <tr><td>3</td><td><span class="inline-equation" data-expr="\frac{2}{4} = 50\%"></span></td></tr>
@@ -92,9 +92,9 @@ Here are the tediously-derived solutions to the N=2 through N=10 cases:
 
 We can use the Fibonnaci numbers to come up with general expressions for the odd and even cases:
 {% raw %}
-<div class="equation" data-expr="P_{0} = \begin{cases} 
- \frac{F_{N}}{F_{N-1}+F_{N+1}} & \text{if } N \text{ is odd} \\[1em] 
- \frac{F_{N-1}+F_{N+1}}{2F_{N-2}+F_{N+3}} & \text{if } N \text{ is even} 
+<div class="equation" data-expr="P_{0} = \begin{cases}
+ \frac{F_{N}}{F_{N-1}+F_{N+1}} & \text{if } N \text{ is odd} \\[1em]
+ \frac{F_{N-1}+F_{N+1}}{2F_{N-2}+F_{N+3}} & \text{if } N \text{ is even}
 \end{cases}"></div>
 {% endraw %}
 
