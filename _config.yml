@@ -25,7 +25,7 @@ kramdown:
 paginate: 5
 
 # Gems
-#gems: [jekyll-paginate]
+gems: [jekyll-paginate]
 
 # Sass
 sass:
