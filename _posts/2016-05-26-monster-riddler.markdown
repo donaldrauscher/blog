@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "538 Riddler: Puzzle of the Monsters' Gems"
-date:   2015-05-26
+date:   2016-05-26
 categories: 538, fivethirtyeight, riddler
 tags: 538, fivethirtyeight, riddler, probability
 permalink: /monster-riddler
@@ -32,6 +32,3 @@ Putting this all together:
 {% raw %}
 <div class="equation" data-expr=" = \sum_{i=2}^{\infty} \left( \frac{5}{6} \right)^{i} * \frac{1}{6} * \left[ i * \frac{3}{5} - i * \left( \frac{3}{5} \right)^{i} \right] + \sum_{i=2}^{\infty} \left( \frac{2}{3} \right)^{i} * \frac{1}{3} * \left[ i * \frac{3}{4} - i * \left( \frac{3}{4} \right)^{i} \right] + \frac{3}{20} = 3.65"></div>
 {% endraw %}
-
-
-

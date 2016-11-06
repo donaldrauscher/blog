@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "538 Riddler: Puzzle of the Overflowing Martini"
-date:   2015-05-19
+date:   2016-05-19
 categories: 538, fivethirtyeight, riddler
 tags: 538, fivethirtyeight, riddler, geometry
 permalink: /martini-riddler

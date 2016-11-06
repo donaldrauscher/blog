@@ -1,13 +1,13 @@
 ---
 layout: post
 title:  "538 Riddler: Puzzle of Baseball Divisional Champs"
-date:   2015-05-26
+date:   2016-05-26
 categories: 538, fivethirtyeight, riddler
 tags: 538, fivethirtyeight, riddler, baseball
 permalink: /baseball-riddler
 ---
 
-For [this week's Riddler](http://fivethirtyeight.com/features/can-you-solve-the-puzzle-of-the-baseball-division-champs/), I estimated that the division leader would have 88.8 wins after 162 games.  I assumed that each team plays the other teams in it's division 19 times for a total of 76 intradivision games and 86 interdivision games, consistent with the [actual scheduling rules](https://en.wikipedia.org/wiki/Major_League_Baseball_schedule). 
+For [this week's Riddler](http://fivethirtyeight.com/features/can-you-solve-the-puzzle-of-the-baseball-division-champs/), I estimated that the division leader would have 88.8 wins after 162 games.  I assumed that each team plays the other teams in it's division 19 times for a total of 76 intradivision games and 86 interdivision games, consistent with the [actual scheduling rules](https://en.wikipedia.org/wiki/Major_League_Baseball_schedule).
 
 Interdivision games are pretty easy to deal with because the outcomes of each team's interdivision games are independent of one another. If all 162 games were interdivision, the answer would be pretty straightforward (code is in R):
 
