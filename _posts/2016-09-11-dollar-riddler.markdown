@@ -57,7 +57,10 @@ print(B[1,1])
 
 ```
 
-The only issue with this approach is that it is tough to derive from it an expression for the general N case, unless you're unusually gifted at finding matrix inverses, which I am not.  A perhaps more intuitive approach is to set up a system of equations.  Because the problem is symmetrical, we need to solve for just 3 variables, the probabilities of winning with the bill 0, 1, and 2 people away.  Furthermore, because each turn is independent, we can relate these probabilities to one another as follows:
+The only issue with this approach is that it is tough to derive from it an expression for the general N case, unless you're unusually gifted at finding matrix inverses, which I am not.  A perhaps more intuitive approach is to set up a system of equations.  Because the problem is symmetrical, we need to solve for just 3 variables, the probabilities of winning with the bill 0, 1, and 2 people away.  And we can relate these probabilities to one another easily since each turn is independent.  Equations for the N=5, N=6, and N=7 cases:
+
+<table style = 'width:100%;'>
+<tr><td style = 'width:33%; vertical-align: top;'>
 {% raw %}
 <div class="equation" data-expr="\begin{cases}
  & P_{2} = \frac{1}{3} P_{2} + \frac{1}{3} P_{1} \\[1em]
@@ -65,16 +68,26 @@ The only issue with this approach is that it is tough to derive from it an expre
  & P_{0} + 2 P_{1} + 2 P_{2} = 1
 \end{cases}"></div>
 {% endraw %}
-
-Solving this system is straightforward (substitute 1st into 2nd, 2nd into 3rd) and yields the same solution as above.  We can also easily extend it for the N=6 case:
+</td><td style = 'width:33%; vertical-align: top;'>
 {% raw %}
 <div class="equation" data-expr="\begin{cases}
  & P_{3} = \frac{2}{3} P_{2} \\[1em]
- & P_{2} = \frac{1}{3} P_{3} + \frac{1}{3} P_{2} \\[1em]
+ & P_{2} = \frac{1}{3} P_{3} + \frac{1}{3} P_{1} \\[1em]
  & P_{1} = \frac{1}{3} P_{2} + \frac{1}{3} P_{0} \\[1em]
  & P_{0} + 2 P_{1} + 2 P_{2} + P_{3} = 1
 \end{cases}"></div>
 {% endraw %}
+</td><td style = 'width:33%; vertical-align: top;'>
+{% raw %}
+<div class="equation" data-expr="\begin{cases}
+ & P_{3} = \frac{1}{3} P_{3} + \frac{1}{3} P_{2} \\[1em]
+ & P_{2} = \frac{1}{3} P_{3} + \frac{1}{3} P_{1} \\[1em]
+ & P_{1} = \frac{1}{3} P_{2} + \frac{1}{3} P_{0} \\[1em]
+ & P_{0} + 2 P_{1} + 2 P_{2} + 2 P_{3} = 1
+\end{cases}"></div>
+{% endraw %}
+</td></tr>
+</table>
 
 Here are the tediously-derived solutions to the N=2 through N=10 cases:
 <table class="pretty">
@@ -101,5 +114,5 @@ We can use the Fibonnaci numbers to come up with general expressions for the odd
 Using the simpler odd case and some knowledge about the Fibonnaci numbers, we can see what happens as N goes to infinity:
 {% raw %}
 <div class="equation" data-expr="\lim_{x \to \infty } \frac{F_{x+1}}{F_{x}} = \frac{1+\sqrt{5}}{2}"></div>
-<div class="equation" data-expr="\lim_{N \to \infty }\frac{F_{N}}{F_{N-1}+F_{N+1}} = \frac{\frac{F_{N}}{F_{N-1}}}{2+\frac{F_{N}}{F_{N-1}}} = \frac{1}{\sqrt{5}}"></div>
+<div class="equation" data-expr="\lim_{N \to \infty }\frac{F_{N}}{F_{N-1}+F_{N+1}} = \frac{\frac{F_{N}}{F_{N-1}}}{2+\frac{F_{N}}{F_{N-1}}} = \frac{1}{\sqrt{5}} \approx 44.7\%"></div>
 {% endraw %}
