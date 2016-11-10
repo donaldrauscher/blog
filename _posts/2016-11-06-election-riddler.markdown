@@ -18,4 +18,4 @@ Since there is a nice asymptotic expression for the [central binomial coefficien
 <div class="equation" data-expr="\lim_{N \to \infty } \binom{N}{N/2} \left( \frac{1}{2} \right)^{N} = 0"></div>
 {% endraw %}
 
-Intuitively, it makes sense that, as N goes to infinity, the probability that we are the deciding vote converges to zero.  Although technically the most probable individual outcome, a split election becomes a smaller and smaller proportion of the possible outcomes.  Nevertheless, I'm still voting on Tuesday.
+Intuitively, it makes sense that, as N goes to infinity, the probability that we are the deciding vote converges to zero.  Although technically the most probable individual outcome, a split election becomes a smaller and smaller proportion of the possible outcomes.  This information will not deter me from voting on Tuesday!
