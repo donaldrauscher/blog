@@ -11,7 +11,7 @@ The other day I was building a model and wanted to layer in some ZIP-level censu
 
 I had resigned myself to downloading one of the big databases with all the census data (overkill) until I stumbled upon a [post](https://blog.splitwise.com/2013/09/18/the-2010-us-census-population-by-zip-code-totally-free/) from the data folks at Splitwise (if you're not already a user, I highly recommend) which cued me into the US Census API.  An API!  Not what I was expecting from a government agency, but I'll take it.
 
-Some useful links:
+Some useful links\:
 + You can apply for an API key [here](http://api.census.gov/data/key_signup.html)
 + Here's a [link](http://www.census.gov/data/developers/data-sets/decennial-census.html) to the official documentation
 + A [list](http://api.census.gov/data/2010/sf1/geography.html) of the geographies at which cut the data
