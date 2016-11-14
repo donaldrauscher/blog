@@ -23,6 +23,10 @@ permalink: /map-game-riddler
 
 <a class="animate">Animate</a>
 
+This week's Riddler was very interesting!  I'll start with my big ah-ha: any shape touching N shapes will "bury" at least N-2 shape(s).  Take a simple example where we have 3 touching circles, 3 different colors.  We can't draw a 4th circle whose area borders each of these 3 circles without fully concealing one of the 3 circles.  Meaning we won't have 4 exposed circles when we're done and thus won't be able to get to a 5th color (Bob can use the color of the circle that we've concealed).  It therefore follows that Allison will have to deliberately bury some shapes and therefore cannot win the game outright in 6 moves.
+
+My best solution allows Allison to win in 9 moves.  I started by drawing a cluster of 6 circles with 3 colors, each color used twice.  Allison's 7th circle (4th color) buries 1 circle, Allison's 8th circle (5th color) buries 2 circles, and Allison's 9th circle (6th color) is simply a big circle encompassing the entire graph.  So we need to draw 3 extra circles and 9 circles total to force Bob to use 6 different colors.
+
 <script type="text/javascript">
   $(document).ready(function(){  
 
