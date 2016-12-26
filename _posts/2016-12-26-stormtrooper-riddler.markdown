@@ -16,7 +16,7 @@ First, the hit / miss probabilities for the stormtroopers / rebel with N stormtr
 <tr><td>Rebel</td><td><span class="inline-equation" data-expr="\frac{K\sqrt{N}}{1000}"></span></td><td><span class="inline-equation" data-expr="1-\frac{K\sqrt{N}}{1000}"></span></td></tr>
 </table>
 
-The probability that the rebel wins a specific battle with N stormtroopers remaining can be expressed as follows:
+The probability that the rebel shoots one of the N remaining stormtroopers before being shot can be expressed as follows:
 {% raw %}
 <div class="equation" data-expr="\begin{aligned} P(\text{Rebels Win}) = & P(S_M \cap R_H) + P(S_M \cap R_M)*P(S_M \cap R_H) + P(S_M \cap R_M)^{2}*P(S_M \cap R_H) + \ldots \\ = & \frac{P(S_M \cap R_H)}{1-P(S_M \cap R_M)}=\frac{P(S_M \cap R_H)}{P(S_H) + P(S_M \cap R_H)} \\ = & \frac{\left(\frac{999}{1000}\right)^{N}\frac{K\sqrt{N}}{1000}}{1-\left(\frac{999}{1000}\right)^{N}+\left(\frac{999}{1000}\right)^{N}\frac{K\sqrt{N}}{1000}} \end{aligned}"></div>
 {% endraw %}
