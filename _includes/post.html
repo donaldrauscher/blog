@@ -18,13 +18,13 @@
             {% capture tagStr %}{{ tagStr }},{{ tag }}{% endcapture %}
         {% endfor %}
         <div class="social-share">
-            <a class="social-share-element" id="social-linkedin" href="http://www.linkedin.com/shareArticle?mini=true&title={{ page.title }}&url={{ site.url }}{{ post.permalink }}&source={{ site.url }}" target="_blank" title="Share this post on LinkedIn"></a>
+            <a class="social-share-element" social-network="linkedin" social-action="share" social-target="{{ post.permalink }}" href="http://www.linkedin.com/shareArticle?mini=true&title={{ page.title }}&url={{ site.url }}{{ post.permalink }}&source={{ site.url }}" target="_blank" title="Share this post on LinkedIn"></a>
             &nbsp;
-            <a class="social-share-element" id="social-facebook" href="https://www.facebook.com/sharer/sharer.php?t={{ page.title }}&u={{ site.url }}{{ post.permalink }}" target="_blank" title="Share this post on Facebook"></a>
+            <a class="social-share-element" social-network="facebook" social-action="share" social-target="{{ post.permalink }}" href="https://www.facebook.com/sharer/sharer.php?t={{ page.title }}&u={{ site.url }}{{ post.permalink }}" target="_blank" title="Share this post on Facebook"></a>
             &nbsp;
-            <a class="social-share-element" id="social-twitter" href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ post.permalink }}&hashtags={{ tagStr }}" target="_blank" title="Share this post on Twitter"></a>    
+            <a class="social-share-element" social-network="twitter" social-action="tweet" social-target="{{ post.permalink }}" href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ post.permalink }}&hashtags={{ tagStr }}" target="_blank" title="Share this post on Twitter"></a>
             &nbsp;
-            <a class="social-share-element" id="social-googleplus" href="https://plus.google.com/share?url={{ site.url }}{{ post.permalink }}" target="_blank" title="Share this post on Google Plus"></a>
-        </div> 
+            <a class="social-share-element" social-network="googleplus" social-action="share" social-target="{{ post.permalink }}" href="https://plus.google.com/share?url={{ site.url }}{{ post.permalink }}" target="_blank" title="Share this post on Google Plus"></a>
+        </div>
     </div>
 </section>
