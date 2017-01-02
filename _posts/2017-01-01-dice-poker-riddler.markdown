@@ -15,6 +15,6 @@ Player B has a slight advantage here; player B's expected winnings are $0.06 whi
 We can find the Nash by working backwards.  We first determine the optimal player B strategy for each of the possible player A strategies.  Then, pick the optimal A strategy assuming B reacts optimally.  Here are the results:
 [<img src="/img/dice-poker-nash.png" style="display:block; margin-left:auto; margin-right:auto;">](/img/dice-poker-nash.png)
 
-As expected, the optimal B strategy is consistently higher than the optimal A strategy.  However, player B's advantage diminishes as player A's strategy increases.  At best, player A can make the game even, each player have expected winnings of $0 (so player A doesn't need to pay player B anything to play).  This gives us three Nash Equilibria: (5,5), (5,6), and (6, 6).
+As expected, the optimal B strategy is consistently higher than the optimal A strategy.  However, player B's advantage diminishes as player A's strategy increases.  At best, player A can make the game even, each player having expected winnings of $0 (so player A doesn't need to pay player B anything to play).  Player A's strategy will be to raise if they have a 5 or 6.  Player B's strategy will be to call if they have a 6.  This gives us two Nash Equilibria: (5,6) and (6, 6).
 
 <a href="/files/Dice Poker Riddler vF.xlsx" target="_blank">This Excel document</a> details my work.  Cheers!
