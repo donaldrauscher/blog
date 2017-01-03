@@ -31,7 +31,7 @@ Though there is not a pure strategy Nash equilibrium, [there must exist](https:/
 \text{max } \lambda & & = & \text{min } \mu & \\
 s.t. & u \in \left[ 0,1 \right] & & s.t. & v \in \left[ 0,1 \right] \\
 & 1^{T} u = 1 & & & 1^{T} v = 1 \\
-& \pi^{T} u \geq \lambda & & & \pi u \leq \mu
+& \pi^{T} u \geq \lambda & & & \pi v \leq \mu
 \end{matrix}"></div>
 {% endraw %}
 
