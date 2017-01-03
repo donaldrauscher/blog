@@ -7,25 +7,37 @@ tags: 538, fivethirtyeight, riddler, game_theory, linear_programming
 permalink: /dice-poker-riddler
 ---
 
-In [this week's Riddler](http://fivethirtyeight.com/features/can-you-deal-with-these-card-game-puzzles/), we have another game theory problem. We can describe each player's strategy with a 6-numbered tuple.  For player A, <span class="inline-equation" data-expr="a_{i}"></span> represents the probability that player A raises given a roll of <span class="inline-equation" data-expr="i"></span>.  For player B, <span class="inline-equation" data-expr="b_{i}"></span> represents the probability that player B calls a raise from player A given a roll of <span class="inline-equation" data-expr="i"></span>.  Player A's expected winnings can be expressed as follows:
+In [this week's Riddler](http://fivethirtyeight.com/features/can-you-deal-with-these-card-game-puzzles/), we have another game theory problem. We can describe each player's strategy with a 6 number tuple. For player A, <span class="inline-equation" data-expr="a_{i}"></span> represents the probability that player A raises given a roll of i.  For player B, <span class="inline-equation" data-expr="b_{i}"></span> represents the probability that player B calls a raise from player A given a roll of i.  Each player's expected winnings can be expressed as follows:
 {% raw %}
-<div class="equation" data-expr="W(a,b) = \sum_{i=1}^{6} \sum_{j=1}^{6} (1-a_{i})*E_{ij} + a_{i}*\left( 2*b_{j}E_{ij} + 1*\left(1-b_{j}\right) \right)"></div>
-<div class="equation" data-expr="\text{where } E_{ij} = \begin{cases}
+<div class="equation" data-expr="\pi_{A}(a,b) = \frac{1}{36}\sum_{i=1}^{6} \sum_{j=1}^{6} (1-a_{i})*\epsilon_{ij} + a_{i}*\left( 2*b_{j}\epsilon_{ij} + 1*\left(1-b_{j}\right) \right)"></div>
+<div class="equation" data-expr="\pi_{B}(a,b) = -\pi_{A}(a,b)"></div>
+<div class="equation" data-expr="\text{where } \epsilon_{ij} = \begin{cases}
  1 & \text{if } i>j \\
  0 & \text{if } i=j \\
  -1 & \text{if } i<j
 \end{cases}"></div>
 {% endraw %}
 
-We can start by looking for a Nash equilibrium comprised of pure strategies.  A [pure strategy](https://en.wikipedia.org/wiki/Strategy_(game_theory)#Pure_and_mixed_strategies) is one where the player's behavior is explicitly defined without any randomness. In the above definition, a pure strategy is one where <span class="inline-equation" data-expr="a_{i}"></span> and <span class="inline-equation" data-expr="b_{i}"></span> are binary, yielding <span class="inline-equation" data-expr="2^{6}"></span> potential strategies for each player.  Using the above formula, we can calculate player A's winnings for a every pair of pure strategies, then search the resulting 64x64 grid (matrix W) for Nash equilibria.  Nash equilibria satisfy the following equation:
+We can start by analyzing the [pure strategies](https://en.wikipedia.org/wiki/Strategy_(game_theory)#Pure_and_mixed_strategies).  Pure strategies explicitly define how a player will play a game (e.g. do X if opponent does Y).  In the above definition, a pure strategy is one where <span class="inline-equation" data-expr="a_{i}"></span> and <span class="inline-equation" data-expr="b_{i}"></span> are binary.  For our game, each player has <span class="inline-equation" data-expr="2^{6}"></span> potential pure strategies.  Using the above formula, we can calculate player A's winnings for a every pair of pure strategies, then search the resulting 64x64 grid (<span class="inline-equation" data-expr="\pi_{A}"></span>) for Nash equilibria.  Because this is a zero-sum game, potential pure Nash equilibria <span class="inline-equation" data-expr="(\tilde{a},\tilde{b})"></span> will be "saddle" point(s) satisfying the following conditions:
+{% raw %}
+<div class="equation" data-expr="\max_{1 \leq i \leq 64}\pi_{A}(a,\tilde{b}) = \pi_{A}(\tilde{a},\tilde{b}) = \min_{1 \leq i \leq 64}\pi_{A}(\tilde{a},b)"></div>
+{% endraw %}
 
-Interestingly, there are no pure Nash equilibria!  We can see this by looking at a few common strategies.  Player A's most common row-maximizing strategy is always raising: (1,1,1,1,1).  However, if player B knew player A was using this strategy, they would respond by only calling if they had at least 2, netting them $0.11 of expected winnings.  And if player A knew player B was using this strategy, they would respond by only raising when they had a 4 or higher, netting them $0.17 of expected winnings.  There does not exist a pair of pure strategies for which neither player has an incentive to deviate.
+In other words, they will be column maximums (meaning player A will have no reason to deviate) and row minimums (meaning player B will have no reason to deviate).  Interestingly, as is seen in the visual below, there are no pure Nash equilibria!  We can see this by looking at a few common strategies.  Player A's most common row-maximizing strategy is always raising: (1,1,1,1,1).  However, if player B knew player A was using this strategy, they would respond by only calling if they had at least a 2, netting them $0.11 of expected winnings.  And if player A knew player B was using this strategy, they would respond by only raising when they had a 4 or higher, netting them $0.17 of expected winnings and triggering yet another change to player B's strategy.
 
-Though there is not a pure strategy Nash equilibrium, [there must exist](...) a mixed strategy Nash equilibrium.  Furthermore, since this is is a zero-sum game, player A's strategy is the minimax and player B's strategy is the maximin.  We can find these point(s) with a pair of linear programs:
+Though there is not a pure strategy Nash equilibrium, [there must exist](https://en.wikipedia.org/wiki/Nash_equilibrium#Nash.27s_Existence_Theorem) a mixed strategy Nash equilibrium.  A mixed strategy is simply a linear combination of pure strategies, the coefficients representing how often that strategy is to be used. Using Von Neumann's minimax theorem, we can construct a pair of linear programs to find the Nash equilibrium:
+{% raw %}
+<div class="equation" data-expr="\begin{matrix}
+\text{max } \lambda & & = & \text{min } \mu & \\
+s.t. & u \in \left[ 0,1 \right] & & s.t. & v \in \left[ 0,1 \right] \\
+& 1^{T} u = 1 & & & 1^{T} v = 1 \\
+& \pi^{T} u \geq \lambda & & & \pi u \leq \mu
+\end{matrix}"></div>
+{% endraw %}
 
 Solving these linear programs, we find that player A's optimal strategy is to always raise when they have a 5 or 6 and raise <span class="inline-equation" data-expr="\frac{2}{3}"></span> of the time when they have a 1 (i.e. bluff).  Very cool!  Player B's optimal strategy is to always call when they have a 5 or 6 and call <span class="inline-equation" data-expr="\frac{1}{2}"></span>, <span class="inline-equation" data-expr="\frac{5}{6}"></span>, and <span class="inline-equation" data-expr="\frac{1}{3}"></span> of the time when they have a 2, 3, and 4 respectively.  At this equilibrium, player A's expected winnings are $0.093.  
 
-Calculations below in R. Also need to credit Laurent Lessard's [blog post](http://www.laurentlessard.com/bookproofs/) on this problem.  He did an awesome job laying out the underlying math.   
+Calculations below in R. Also need to credit Laurent Lessard's [blog post](http://www.laurentlessard.com/bookproofs/baby-poker/) on this problem; as always, he did an awesome job laying out the underlying math.   
 
 ``` R
 suppressMessages(library(dplyr))
@@ -113,15 +125,15 @@ t(pure_strat[,pure_strat_cross %>% filter(B == top_B_strategy & W == max_W_per_B
 ```
 ``` R
 # mixed strategy nash equilibrium
-W <- matrix(pure_strat_cross %>% arrange(B, A) %>% .$W, byrow=TRUE, ncol=n_pure_strat)
+P <- matrix(pure_strat_cross %>% arrange(A, B) %>% .$W, byrow=TRUE, ncol=n_pure_strat)
 
 obj <- c(rep(0, n_pure_strat), 1)
 A_base <- rbind(
   matrix(c(rep(1, n_pure_strat), 0), nrow=1), # sum of probabilities equals 1
   cbind(diag(n_pure_strat), 0) # probabilities >= 0
 )
-A1 <- rbind(A_base, cbind(W, -1)) # minimax constraints
-A2 <- rbind(A_base, cbind(-t(W), 1)) # minimax constraints
+A1 <- rbind(A_base, cbind(t(P), -1)) # minimax constraints
+A2 <- rbind(A_base, cbind(-P, 1)) # minimax constraints
 dir <- c("=", rep(">=", 2*n_pure_strat))
 b <- c(1, rep(0, 2*n_pure_strat))
 
