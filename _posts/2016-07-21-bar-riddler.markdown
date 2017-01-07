@@ -10,17 +10,17 @@ This week’s [Riddler](http://fivethirtyeight.com/features/how-long-will-you-be
 {% raw %}
 <div class="equation" data-expr="
 \begin{matrix}
- & 1 & 0 & 0 & 0 & 0 & \cdots & 0 & \\ 
- & 0.5 & 0 & 0.5 & 0 & 0 & \cdots & 0 & \\ 
- & 0 & 0.5 & 0 & 0.5 & 0 & \cdots & 0 & \\ 
- & 0 & 0 & 0.5 & 0 & 0.5 & \cdots & 0 & \\ 
- & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\ 
+ & 1 & 0 & 0 & 0 & 0 & \cdots & 0 & \\
+ & 0.5 & 0 & 0.5 & 0 & 0 & \cdots & 0 & \\
+ & 0 & 0.5 & 0 & 0.5 & 0 & \cdots & 0 & \\
+ & 0 & 0 & 0.5 & 0 & 0.5 & \cdots & 0 & \\
+ & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
  & 0 & 0 & 0 & 0 & 0 & \cdots & 1
 \end{matrix}
 "></div>
 {% endraw %}
 
-Once we compute the fundamental matrix (N), calculating the expected number of steps until absorption is fairly [easy](https://en.wikipedia.org/wiki/Absorbing_Markov_chain).  Plugging in a few different values of X and Y, a trend emerges: the expected number of coin flips is simply <span style="text-decoration: underline;">X * Y</span>.  Another wonderfully simple Riddler solution!
+Once we compute the fundamental matrix (N), calculating the expected number of steps until absorption is fairly [easy](https://en.wikipedia.org/wiki/Absorbing_Markov_chain).  Plugging in a few different values of X and Y, a trend emerges: the expected number of coin flips is simply <span style="font-weight: bold;">XY</span>.  Beautiful.
 
 ``` R
 X <- 4
@@ -45,6 +45,11 @@ N <- solve(diag(n_transient_state) - Q)
 
 # expected number of steps to absorbtion
 t <- N %*% matrix(1, n_transient_state, 1)
-print(t[X])
 
+ggplot() +
+  geom_line(aes(x=-(X-1):(Y-1), y=t)) +
+  geom_point(aes(x=0, y=t[X]), colour="red", size=1) +
+  geom_text(aes(x=0, y=t[X], label=t[X]), colour="red", nudge_y=2) +
+  xlab("Starting Point") + ylab("Expected Game Length")
 ```
+<img src="/img/bar-riddler.png" style="display:block; margin-left:auto; margin-right:auto;">
