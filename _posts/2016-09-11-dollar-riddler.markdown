@@ -33,7 +33,6 @@ From this transition matrix we can calculate the absorbing probabilities using t
 Q here represents the transient-to-transient transition matrix (top left 5x5 in above matrix), and R represents the transient-to-absorbing transition matrix (top right 5x5 in the above matrix).  Calculating this out, the probability of winning if the game starts at you, next to you, or two spots away from you is <span class="inline-equation" data-expr="\frac{5}{11} = 45.45\%"></span>, <span class="inline-equation" data-expr="\frac{2}{11} = 18.18\%"></span>, and <span class="inline-equation" data-expr="\frac{1}{11} = 9.09\%"></span> respectively.
 
 ``` R
-
 # number of players
 n <- 5
 
@@ -53,8 +52,15 @@ N <- solve(diag(n) - Q)
 
 # calculate absorbing probabilities
 B <- N %*% R
-print(B[1,1])
-
+print(B)
+```
+```
+           [,1]       [,2]       [,3]       [,4]       [,5]
+[1,] 0.45454545 0.18181818 0.09090909 0.09090909 0.18181818
+[2,] 0.18181818 0.45454545 0.18181818 0.09090909 0.09090909
+[3,] 0.09090909 0.18181818 0.45454545 0.18181818 0.09090909
+[4,] 0.09090909 0.09090909 0.18181818 0.45454545 0.18181818
+[5,] 0.18181818 0.09090909 0.09090909 0.18181818 0.45454545
 ```
 
 The only issue with this approach is that it is tough to derive from it an expression for the general N case, unless you're unusually gifted at finding matrix inverses, which I am not.  A perhaps more intuitive approach is to set up a system of equations.  Because the problem is symmetrical, we need to solve for just 3 variables, the probabilities of winning with the bill 0, 1, and 2 people away.  And we can relate these probabilities to one another easily since each turn is independent.  Equations for the N=5, N=6, and N=7 cases:
