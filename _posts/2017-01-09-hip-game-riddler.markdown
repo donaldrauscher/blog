@@ -27,7 +27,7 @@ s.t. \quad & \sum_{i=1}^{n^2} x_{i} = \left \lceil \frac{n^2}{2} \right \rceil \
 \end{aligned}"></div>
 {% endraw %}
 
-The largest N for which the optimal solution to this integer program is 0 (indicating a tie) is 6! For a 7x7 board, the optimal solution still has 3 squares. Here's what the board looks like:
+A 6x6 board is the largest board for which the optimal solution to this integer program is 0, indicating a tie. For a 7x7 board, the optimal solution still has 3 squares. And ties must be impossible on any larger boards since they will of course contain a 7x7 sub-board. Here's what optimal solutions on the 6x6 and 7x7 boards look like:
 <table style="width:100%;"><tr>
 <td style="width:50%; "><img src="/img/hip-n6.png" style="display:block; margin-left:auto; margin-right:auto;"></td>
 <td style="width:50%;"><img src="/img/hip-n7.png" style="display:block; margin-left:auto; margin-right:auto;"></td>
@@ -62,6 +62,12 @@ squares2 <- as.matrix(squares2[,paste0("p",1:n^2)])
 
 # make linear program
 n_squares <- nrow(squares2)
+n_squares
+```
+```
+105
+```
+``` R
 
 temp <- matrix(0, ncol=n_squares*2, nrow=n_squares*2)
 diag(temp) <- rep(c(1,-1), each=n_squares)
