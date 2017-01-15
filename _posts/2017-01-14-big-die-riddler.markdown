@@ -26,6 +26,7 @@ We break this transition matrix into three components: transient-to-transient (Q
 {% endraw %}
 
 The expected number of rolls for the game is simply the average of the values in this vector plus 1, since we're equally likely to start at any one of these initial rolls.  A little R code gives us the answer:
+
 ``` R
 Q <- matrix(0, ncol=100, nrow=100)
 Q[upper.tri(Q,diag=TRUE)] <- 1/100
