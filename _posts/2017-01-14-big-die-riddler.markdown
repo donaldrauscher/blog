@@ -20,7 +20,7 @@ P = \begin{bmatrix}
 "></div>
 {% endraw %}
 
-We break this transition matrix into three components: transient-to-transient (Q), transient-to-absorbing (R), and absorbing-to-absorbing (the identity matrix by definition).  The expected number of rolls before being absorbed when starting at each transient state is the following vector:
+We break this transition matrix into three components: transient-to-transient (Q), transient-to-absorbing (R), and absorbing-to-absorbing (the identity matrix by definition).  Q here is simply the above matrix minus the last row and the last column (since we have just 1 absorbing state).  The expected number of rolls before being absorbed when starting at each transient state is the following vector:
 {% raw %}
 <div class="equation" data-expr="t = \left( I - Q \right)^{-1} \mathbf{1}"></div>
 {% endraw %}
@@ -42,15 +42,15 @@ Though this gets us to the answer, it's tough to extend this approach to the gen
 {% raw %}
 <div class="equation" data-expr="\begin{aligned}
  E_{100} = & \frac{1}{100} E_{100} + 1 = \frac{100}{99} \\
- E_{99} = & \frac{1}{100} E_{99} + \frac{1}{100} E_{100} + 1 = \left( \frac{100}{99} \right)^{2} \\
- E_{98} = & \frac{1}{100} E_{88} + \frac{1}{100} E_{99} + \frac{1}{100} E_{100} + 1 = \left( \frac{100}{99} \right)^{3} \\
- \cdots \\
+ E_{99} = & \frac{1}{100} E_{99} + \frac{1}{100} E_{100} + 1 = \frac{1}{100} E_{99} + E_{100} = \left( \frac{100}{99} \right)^{2} \\
+ E_{98} = & \frac{1}{100} E_{88} + \frac{1}{100} E_{99} + \frac{1}{100} E_{100} + 1 = \frac{1}{100} E_{88} + E_{99} = \left( \frac{100}{99} \right)^{3} \\
+ \vdots \\
  E_{i} = & \left( \frac{100}{99} \right)^{100-i+1}
 \end{aligned}"></div>
 {% endraw %}
 
-This is analagous to the vector <span class="inline-equation" data-expr="t"></span> that we computed above.  Thus, the average of <span class="inline-equation" data-expr="E_{1}"></span> through <span class="inline-equation" data-expr="E_{100}"></span> plus 1 gives us the expected number of rolls for the game.  We can also extend this logic to derive an expression for the N case.  Interestingly, as N goes to infinity, expected number of rolls converges on e!
+This is analagous to the vector <span class="inline-equation" data-expr="t"></span> that we computed above.  Thus, the average of <span class="inline-equation" data-expr="E_{1}"></span> through <span class="inline-equation" data-expr="E_{100}"></span> plus 1 gives us the expected number of rolls for the game.  And our answer here is consistent with the absorbing Markov Chain approach above.  We can also extend this logic to derive an expression for the N case.  Interestingly, as N goes to infinity, the expected number of rolls converges on e!
 {% raw %}
-<div class="equation" data-expr="E(100) = 1 + \frac{1}{100} \sum_{i=1}^{100} E_{i} = 1 + \frac{1}{100} \sum_{i=1}^{100} \left( \frac{100}{99} \right)^{i} = \left( \frac{100}{99} \right)^{100} = 2.731999"></div>
+<div class="equation" data-expr="E = 1 + \frac{1}{100} \sum_{i=1}^{100} E_{i} = 1 + \frac{1}{100} \sum_{i=1}^{100} \left( \frac{100}{99} \right)^{i} = \left( \frac{100}{99} \right)^{100} = 2.731999"></div>
 <div class="equation" data-expr="E(N) = \left( \frac{N}{N-1} \right)^{N} \rightarrow  \lim_{N \to \infty } E(N) = e = 2.718283"></div>
 {% endraw %}
