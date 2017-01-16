@@ -43,7 +43,7 @@ Though this gets us to the answer, it's tough to extend this approach to the gen
 <div class="equation" data-expr="\begin{aligned}
  E_{100} = & \frac{1}{100} E_{100} + 1 = \frac{100}{99} \\
  E_{99} = & \frac{1}{100} E_{99} + \frac{1}{100} E_{100} + 1 = \frac{1}{100} E_{99} + E_{100} = \left( \frac{100}{99} \right)^{2} \\
- E_{98} = & \frac{1}{100} E_{88} + \frac{1}{100} E_{99} + \frac{1}{100} E_{100} + 1 = \frac{1}{100} E_{88} + E_{99} = \left( \frac{100}{99} \right)^{3} \\
+ E_{98} = & \frac{1}{100} E_{98} + \frac{1}{100} E_{99} + \frac{1}{100} E_{100} + 1 = \frac{1}{100} E_{98} + E_{99} = \left( \frac{100}{99} \right)^{3} \\
  \vdots \\
  E_{i} = & \left( \frac{100}{99} \right)^{100-i+1}
 \end{aligned}"></div>
