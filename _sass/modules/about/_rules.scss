@@ -9,7 +9,7 @@
         align-items: center;
         justify-content: center;
     }
-    
+
     .about ul {
 	list-style-type: none;
     }
@@ -59,13 +59,16 @@
 
         &:hover {
             color: $inverse-text-colour;
+            img {
+              -webkit-filter: invert(100%);
+            }
         }
 
-        img { 
-            margin-right: 5px; 
+        img {
+            margin-right: 5px;
             display: inline-block;
             vertical-align: middle;
-            height: 15px;
+            height: 15px;            
         }
     }
 
