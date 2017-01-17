@@ -60,7 +60,6 @@ for (i in 1:n^2){
 }
 squares2 <- as.matrix(squares2[,paste0("p",1:n^2)])
 
-# make linear program
 n_squares <- nrow(squares2)
 n_squares
 ```
@@ -68,6 +67,7 @@ n_squares
 105
 ```
 ``` R
+# make linear program
 temp <- matrix(0, ncol=n_squares*2, nrow=n_squares*2)
 diag(temp) <- rep(c(1,-1), each=n_squares)
 
