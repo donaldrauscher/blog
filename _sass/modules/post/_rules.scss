@@ -210,46 +210,23 @@
     }
 
     a.social-share-element[social-network="linkedin"] {
-        background-image: url(/img/linkedin-24-black.png);
-        //background-color: #007fb1;
-
+        background-image: url(/img/linkedin-128-white.png);
         &:hover {
-            border: 1px solid black;
-            //background-image: url(/img/linkedin-24-black.png);
-            //background-color: white;
+            -webkit-filter: invert(100%);
         }
     }
 
     a.social-share-element[social-network="facebook"] {
-        background-image: url(/img/facebook-24-black.png);
-        //background-color: #3B5998;
-
+        background-image: url(/img/facebook-128-white.png);
         &:hover {
-            border: 1px solid black;
-            //background-image: url(/img/facebook-24-black.png);
-            //background-color: white;
+            -webkit-filter: invert(100%);
         }
     }
 
     a.social-share-element[social-network="twitter"] {
-        background-image: url(/img/twitter-24-black.png);
-        //background-color: #00ACED;
-
+        background-image: url(/img/twitter-128-white.png);
         &:hover {
-            border: 1px solid black;
-            //background-image: url(/img/twitter-24-black.png);
-            //background-color: white;
-        }
-    }
-
-    a.social-share-element[social-network="googleplus"] {
-        background-image: url(/img/googleplus-24-black.png);
-        //background-color: #D14836;
-
-        &:hover {
-            border: 1px solid black;
-            //background-image: url(/img/googleplus-24-black.png);
-            //background-color: white;
+            -webkit-filter: invert(100%);
         }
     }
 
