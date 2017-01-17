@@ -68,7 +68,6 @@ n_squares
 105
 ```
 ``` R
-
 temp <- matrix(0, ncol=n_squares*2, nrow=n_squares*2)
 diag(temp) <- rep(c(1,-1), each=n_squares)
 
