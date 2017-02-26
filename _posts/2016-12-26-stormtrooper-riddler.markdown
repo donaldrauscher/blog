@@ -2,8 +2,7 @@
 layout: post
 title:  "538 Riddler: Rebel vs. Stormtroopers"
 date:   2016-12-26
-categories: 538, fivethirtyeight, riddler, probability
-tags: 538, fivethirtyeight, riddler, probability
+tags: [538, fivethirtyeight, riddler, probability]
 permalink: /stormtrooper-riddler
 ---
 

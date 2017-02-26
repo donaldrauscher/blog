@@ -2,8 +2,7 @@
 layout: post
 title:  "538 Riddler: Dice Poker Riddler"
 date:   2017-01-01
-categories: 538, fivethirtyeight, riddler, game_theory, linear_programming
-tags: 538, fivethirtyeight, riddler, game_theory, linear_programming
+tags: [538, fivethirtyeight, riddler, game_theory, linear_programming]
 permalink: /dice-poker-riddler
 ---
 

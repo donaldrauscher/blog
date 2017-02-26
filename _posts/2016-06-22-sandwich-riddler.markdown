@@ -2,8 +2,7 @@
 layout: post
 title:  "538 Riddler: Puzzle of the Picky Eater"
 date:   2016-06-22
-categories: 538, fivethirtyeight, riddler
-tags: 538, fivethirtyeight, riddler, geometry
+tags: [538, fivethirtyeight, riddler, geometry]
 permalink: /sandwich-riddler
 ---
 

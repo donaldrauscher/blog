@@ -2,8 +2,7 @@
 layout: post
 title:  "538 Riddler: Puzzle of Baseball Divisional Champs"
 date:   2016-05-26
-categories: 538, fivethirtyeight, riddler
-tags: 538, fivethirtyeight, riddler, baseball
+tags: [538, fivethirtyeight, riddler, baseball]
 permalink: /baseball-riddler
 ---
 

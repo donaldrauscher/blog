@@ -2,8 +2,7 @@
 layout: post
 title:  "Using the US Census API"
 date:   2016-11-10
-categories: api, census, data-scraping
-tags: api, census, data-scraping
+tags: [api, census, data-scraping]
 permalink: /census-api
 ---
 

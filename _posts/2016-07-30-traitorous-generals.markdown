@@ -2,8 +2,7 @@
 layout: post
 title: '538 Riddler: Traitorous Generals'
 date: 2016-07-30
-categories: 538, fivethirtyeight, riddler
-tags: 538, fivethirtyeight, riddler, logic
+tags: [538, fivethirtyeight, riddler, logic]
 permalink: /traitorous-generals
 ---
 

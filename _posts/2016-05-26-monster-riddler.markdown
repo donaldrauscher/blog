@@ -2,8 +2,7 @@
 layout: post
 title:  "538 Riddler: Puzzle of the Monsters' Gems"
 date:   2016-05-26
-categories: 538, fivethirtyeight, riddler
-tags: 538, fivethirtyeight, riddler, probability
+tags: [538, fivethirtyeight, riddler, probability]
 permalink: /monster-riddler
 ---
 

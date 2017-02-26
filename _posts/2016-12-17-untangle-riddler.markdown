@@ -2,8 +2,7 @@
 layout: post
 title:  "538 Riddler: Untangling the Tangled Wires"
 date:   2016-12-17
-categories: 538, fivethirtyeight, riddler, logic
-tags: 538, fivethirtyeight, riddler, logic
+tags: [538, fivethirtyeight, riddler, logic]
 permalink: /untangle-riddler
 ---
 

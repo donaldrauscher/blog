@@ -2,8 +2,7 @@
 layout: post
 title: '538 Riddler: Betting on Cubs to Win!'
 date: 2016-10-02
-categories: 538, fivethirtyeight, riddler, logic, gambling
-tags: 538, fivethirtyeight, riddler, logic, gambling
+tags: [538, fivethirtyeight, riddler, logic, gambling]
 permalink: /cubs-riddler
 ---
 

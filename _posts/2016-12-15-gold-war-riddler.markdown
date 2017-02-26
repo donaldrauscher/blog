@@ -2,8 +2,7 @@
 layout: post
 title: "538 Riddler: The <span style='text-decoration:line-through;'>C</span>Gold War"
 date:   2016-12-15
-categories: 538, fivethirtyeight, riddler, game_theory
-tags: 538, fivethirtyeight, riddler, game_theory
+tags: [538, fivethirtyeight, riddler, game_theory]
 permalink: /gold-war-riddler
 ---
 

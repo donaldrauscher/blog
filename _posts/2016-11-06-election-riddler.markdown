@@ -2,8 +2,7 @@
 layout: post
 title:  "538 Riddler: Chance of Being THE Deciding Vote"
 date:   2016-11-06
-categories: 538, fivethirtyeight, riddler
-tags: 538, fivethirtyeight, riddler, probability
+tags: [538, fivethirtyeight, riddler, probability]
 permalink: /election-riddler
 ---
 

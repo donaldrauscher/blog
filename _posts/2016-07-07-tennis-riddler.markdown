@@ -2,8 +2,7 @@
 layout: post
 title:  "538 Riddler: Defeating Roger Federer"
 date:   2016-07-07
-categories: 538, fivethirtyeight, riddler
-tags: 538, fivethirtyeight, riddler, probability
+tags: [538, fivethirtyeight, riddler, probability]
 permalink: /tennis-riddler
 ---
 

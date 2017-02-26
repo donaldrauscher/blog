@@ -2,8 +2,7 @@
 layout: post
 title:  "538 Riddler: Puzzle of the Robot Pizza Cutter"
 date:   2016-06-26
-categories: 538, fivethirtyeight, riddler
-tags: 538, fivethirtyeight, riddler, geometry
+tags: [538, fivethirtyeight, riddler, geometry]
 permalink: /pizza-riddler
 ---
 

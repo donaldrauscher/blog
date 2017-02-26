@@ -2,8 +2,7 @@
 layout: post
 title:  "538 Riddler: Defending Riddler Headquarters"
 date:   2016-07-14
-categories: 538, fivethirtyeight, riddler
-tags: 538, fivethirtyeight, riddler
+tags: [538, fivethirtyeight, riddler]
 permalink: /laser-riddler
 ---
 
@@ -34,23 +33,23 @@ bisectors <- do.call(rbind, lapply(1:5, function(i){
     delta.1 <- delta.edge
     delta.2 <- delta.point
   }
-  
+
   bisectors.begin.x <- x[i] + (x[i+1] - x[i])*delta.1/0.5
   bisectors.begin.y <- y[i] + (y[i+1] - y[i])*delta.1/0.5
-  
+
   bisectors.end.x <- x[i+5] + (x[i+6] - x[i+5])*delta.2/0.5
   bisectors.end.y <- y[i+5] + (y[i+6] - y[i+5])*delta.2/0.5
-  
+
   bisectors.x <- do.call(c, lapply(1:n, function(j) c(bisectors.begin.x[j], bisectors.end.x[j])))
   bisectors.y <- do.call(c, lapply(1:n, function(j) c(bisectors.begin.y[j], bisectors.end.y[j])))
-  
+
   return(data.frame(x = bisectors.x, y = bisectors.y, piece = rep((n*(i-1) + 1):(n*i), each = 2)))
-    
+
 }))
 
 # plot it
-ggplot() + 
-  geom_path(aes(x = pentagon$x, y = pentagon$y)) + 
+ggplot() +
+  geom_path(aes(x = pentagon$x, y = pentagon$y)) +
   geom_path(aes(x = bisectors$x, y = bisectors$y, group = bisectors$piece), colour = "red")
 
 ```

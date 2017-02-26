@@ -2,7 +2,6 @@
 layout: post
 title: 'Building an Optimal Portfolio of ETFs'
 date:   2017-02-26
-categories: [investing, portfolio_optimization, etfs]
 tags: [investing, portfolio_optimization, etfs]
 permalink: /etf-portfolio
 ---

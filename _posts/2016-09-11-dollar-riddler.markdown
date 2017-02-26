@@ -2,10 +2,8 @@
 layout: post
 title: '538 Riddler: Who Gets The $100 Bill?'
 date: 2016-09-11
-categories: 538, fivethirtyeight, riddler
-tags: 538, fivethirtyeight, riddler, probability
+tags: [538, fivethirtyeight, riddler, probability]
 permalink: /dollar-riddler
-published: true
 ---
 
 I modelled this week's [Riddler](http://fivethirtyeight.com/features/who-keeps-the-money-you-found-on-the-floor/) as an [absorbing Markov chain](https://en.wikipedia.org/wiki/Absorbing_Markov_chain).  This MC has 5 transient states (representing the dollar bill sitting in front of someone) and 5 absorbing states (which represent someone winning).  The transition probability matrix is the following:

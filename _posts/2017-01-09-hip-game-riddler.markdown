@@ -2,8 +2,7 @@
 layout: post
 title:  "538 Riddler: Martin Gardner's 'Hip' Game"
 date:   2017-01-09
-categories: 538, fivethirtyeight, riddler, linear_programming
-tags: 538, fivethirtyeight, riddler, linear_programming
+tags: [538, fivethirtyeight, riddler, linear_programming]
 permalink: /hip-game-riddler
 ---
 

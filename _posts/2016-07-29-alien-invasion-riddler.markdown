@@ -2,8 +2,7 @@
 layout: post
 title: '538 Riddler: Defending Against an Alien Invasion'
 date: 2016-07-29
-categories: 538, fivethirtyeight, riddler
-tags: 538, fivethirtyeight, riddler, geometry
+tags: [538, fivethirtyeight, riddler, geometry]
 permalink: /alien-invasion
 ---
 This [week's Ridder](http://fivethirtyeight.com/features/solve-the-puzzle-stop-the-alien-invasion/) was the first one that I got wrong! I never really felt confident in my answer, thus no post.  In the end, I did not model random points on the surface of the sphere correctly.  A [good link](http://mathworld.wolfram.com/SpherePointPicking.html) supplied by the 538 folks demonstrates how to do this correctly.
