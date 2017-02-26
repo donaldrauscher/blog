@@ -10,7 +10,7 @@ permalink: /stormtrooper-riddler
 In [this week's Riddler](http://fivethirtyeight.com/features/build-your-own-death-star-and-defeat-the-stormtroopers/), we are rebels trying to defeat a group of 9 advancing stormtroopers.  Fortunately for us, we are more accurate than the notoriously inaccurate stormtroopers, and the stormtroopers are clumped together, making them easy to pick off.
 
 First, the hit / miss probabilities for the stormtroopers / rebel with N stormtroopers remaining:
-<table class="pretty" style="margin-left:auto; margin-right:auto;">
+<table class="pretty">
 <tr><th>Probability</th><th>Hit</th><th>Miss</th></tr>
 <tr><td>Stormtrooper</td><td><span class="inline-equation" data-expr="1-\left(\frac{999}{1000}\right)^{N}"></span></td><td><span class="inline-equation" data-expr="\left(\frac{999}{1000}\right)^{N}"></span></td></tr>
 <tr><td>Rebel</td><td><span class="inline-equation" data-expr="\frac{K\sqrt{N}}{1000}"></span></td><td><span class="inline-equation" data-expr="1-\frac{K\sqrt{N}}{1000}"></span></td></tr>
