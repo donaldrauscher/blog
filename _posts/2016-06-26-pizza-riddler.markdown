@@ -11,7 +11,7 @@ The robot's first cut will create 2 pizza slices.  The robot's second cut will c
 
 <table>
 <tr><th style = 'width:33%;'>Second Cut</th><th style = 'width:33%;'>Third Cut (Starting w/ 3 Slices)</th><th style = 'width:33%;'>Third Cut (Starting w/ 4 Slices)</th></tr>
-<tr><td colspan = '3'><img src = '/img/pizza-riddler.jpg' width='100%'></td></tr>
+<tr><td colspan = '3'><img src = '/assets/img/pizza-riddler.jpg' width='100%'></td></tr>
 <tr>
 	<td style = "vertical-align: top;">
 		<div class="inline-equation" data-expr="\scriptsize{  P(S_{2} = 3) = A^2 + B^2 }"></div>

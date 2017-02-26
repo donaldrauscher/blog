@@ -14,7 +14,7 @@ I found it easiest to think about this problem in terms of polar coordinates.  T
 
 Plotting this, it forms this weird, rounded rectangle shape:
 <br>
-<img src="/img/sandwich-riddler.jpg" width="400px" style = "display: block; margin-left: auto; margin-right: auto;">
+<img src="/assets/img/sandwich-riddler.jpg" width="400px" style = "display: block; margin-left: auto; margin-right: auto;">
 
 I integrated the above equation to get the area.  Unlike a regular integral where each area is a rectangle (Reimann sum), each incremental integration area is a circular sector with <span class="inline-equation" data-expr="dA = \frac{ \pi dr^{2}}{2 \pi} = \frac{dr^{2}}{2}"></span>.  Putting this all together:
 {% raw %}

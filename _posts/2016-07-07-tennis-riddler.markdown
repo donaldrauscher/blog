@@ -16,6 +16,6 @@ If we focus exclusively on that final game, there is a scenario which gives us a
 <div class="equation" data-expr="= p + pq + pq^2 + pq^3 + pq^4 + pq^5 + q^6 \frac{p^2}{\left( 1 - 2pq \right)} = 5.86\%"></div>
 {% endraw %}
 
-<img src="/img/tennis-riddler.jpeg" style="display:block; margin-left:auto; margin-right:auto;">
+<img src="/assets/img/tennis-riddler.jpeg" style="display:block; margin-left:auto; margin-right:auto;">
 
 When the probability of winning each point hits 11%, we are more likely to prevail in the tie break than Roger!  Code is posted to my Github [here](https://github.com/donaldrauscher/tennis-riddler).  Cheers.

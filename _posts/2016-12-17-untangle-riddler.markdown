@@ -15,7 +15,7 @@ Next, we need to figure out what happens in between these known power-of-2 point
 {% endraw %}
 
 The following visual illustrates how to solve the N=3 through N=10 cases.  Like colors represent wires that are tied together.  Lines represent known delineations; we can know that a wire is part of a group but know exactly which wire down below it belongs to.
-<img src="/img/untangled-riddler.jpg" style="display:block; margin-left:auto; margin-right:auto;">
+<img src="/assets/img/untangled-riddler.jpg" style="display:block; margin-left:auto; margin-right:auto;">
 
 There are a couple tricky cases that are worth noting.  
 <ul>

@@ -8,7 +8,7 @@ permalink: /hip-game-riddler
 ---
 
 I began [this week's Riddler](https://fivethirtyeight.com/features/dont-throw-out-that-calendar/) by deriving an expression for the number of squares on a n-sized board:
-<img src="/img/hip-square-cnt.png" style="display:block; margin-left:auto; margin-right:auto;">
+<img src="/assets/img/hip-square-cnt.png" style="display:block; margin-left:auto; margin-right:auto;">
 {% raw %}
 <div class="equation" data-expr="\begin{aligned} S(n) = & \sum_{i=1}^{n-1} i^2*(n-i) = n\sum_{i=1}^{n-1} i^2 - \sum_{i=1}^{n-1} i^3 \\
 = & n \left( \frac{n(n-1)(2n-1)}{6}\right) - \frac{n^2(n-1)^2}{4} = \frac{n^2(n^2-1)}{12}
@@ -29,8 +29,8 @@ s.t. \quad & \sum_{i=1}^{n^2} x_{i} = \left \lceil \frac{n^2}{2} \right \rceil \
 
 A 6x6 board is the largest board for which the optimal solution to this integer program is 0, indicating a tie. For a 7x7 board, the optimal solution still has 3 squares. And ties must be impossible on any larger boards since they will of course contain a 7x7 sub-board. Here's what optimal solutions on the 6x6 and 7x7 boards look like:
 <table style="width:100%;"><tr>
-<td style="width:50%; "><img src="/img/hip-n6.png" style="display:block; margin-left:auto; margin-right:auto;"></td>
-<td style="width:50%;"><img src="/img/hip-n7.png" style="display:block; margin-left:auto; margin-right:auto;"></td>
+<td style="width:50%; "><img src="/assets/img/hip-n6.png" style="display:block; margin-left:auto; margin-right:auto;"></td>
+<td style="width:50%;"><img src="/assets/img/hip-n7.png" style="display:block; margin-left:auto; margin-right:auto;"></td>
 </tr></table>
 
 ``` R

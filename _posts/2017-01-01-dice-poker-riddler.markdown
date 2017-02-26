@@ -83,7 +83,7 @@ ggplot() +
   geom_tile(data=filter(pure_strat_cross, W == min_W_per_A), aes(x = A, y = B), colour="darkred", alpha=0, size=0.75) +
   geom_tile(data=filter(pure_strat_cross, is_nash_eq), aes(x = A, y = B), fill="gold")
 ```
-<img src="/img/dice-poker-pure-strategies.png" style="display:block; margin-left:auto; margin-right:auto;">
+<img src="/assets/img/dice-poker-pure-strategies.png" style="display:block; margin-left:auto; margin-right:auto;">
 
 ``` R
 # most used strategies and opposite player responses

@@ -26,4 +26,4 @@ Having solved for our two constants, we can use our last condition (that the ram
 
 <span class="inline-equation" data-expr="A"></span> here represents the % of the ram's distance that the person travels over some period of time.  We want the inverse, how much faster the ram's velocity must be, which is <span class="inline-equation" data-expr="\frac{1}{A}-1"></span> and conveniently also equal to <span class="inline-equation" data-expr="A"></span>. So the ram must travel about 62% faster than the human to reach the human just as he/she reaches the northeast corner of the pen.  This fits into our intuitive bounds for the problem.  At the very least, the ram must travel <span class="inline-equation" data-expr="\sqrt{2}-1=41.4\%"></span> faster to reach the human, if crossing the pen along the diagonal.  Our stupid ram needs to compensate for this stupidity by being 14% faster than the smart ram. 
 
-<img src="/img/angry-ram.jpeg" style="display:block; margin-left:auto; margin-right:auto;">
+<img src="/assets/img/angry-ram.jpeg" style="display:block; margin-left:auto; margin-right:auto;">

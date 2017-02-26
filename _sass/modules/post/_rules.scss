@@ -18,11 +18,11 @@
     }
 
     .post-header--dw {
-        background-image: url(/img/icon-page.png);
+        background-image: url(/assets/img/icon-page.png);
     }
 
     .post-header--ar {
-        background-image: url(/img/icon-page.png);
+        background-image: url(/assets/img/icon-page.png);
     }
 
     .post-header-title {
@@ -210,21 +210,21 @@
     }
 
     a.social-share-element[social-network="linkedin"] {
-        background-image: url(/img/linkedin-128-white.png);
+        background-image: url(/assets/img/linkedin-128-white.png);
         &:hover {
             -webkit-filter: invert(100%);
         }
     }
 
     a.social-share-element[social-network="facebook"] {
-        background-image: url(/img/facebook-128-white.png);
+        background-image: url(/assets/img/facebook-128-white.png);
         &:hover {
             -webkit-filter: invert(100%);
         }
     }
 
     a.social-share-element[social-network="twitter"] {
-        background-image: url(/img/twitter-128-white.png);
+        background-image: url(/assets/img/twitter-128-white.png);
         &:hover {
             -webkit-filter: invert(100%);
         }

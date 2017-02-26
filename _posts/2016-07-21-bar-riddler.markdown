@@ -52,4 +52,4 @@ ggplot() +
   geom_text(aes(x=0, y=t[X], label=t[X]), colour="red", nudge_y=2) +
   xlab("Starting Point") + ylab("Expected Game Length")
 ```
-<img src="/img/bar-riddler.png" style="display:block; margin-left:auto; margin-right:auto;">
+<img src="/assets/img/bar-riddler.png" style="display:block; margin-left:auto; margin-right:auto;">

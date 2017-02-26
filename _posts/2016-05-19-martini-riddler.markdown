@@ -8,7 +8,7 @@ permalink: /martini-riddler
 ---
 
 Here's my solution to [this week's 538 Riddler](http://fivethirtyeight.com/features/can-you-solve-the-puzzle-of-the-overflowing-martini-glass/):
-[<img src="/img/martini-riddler.jpg" width="885x">](/img/martini-riddler.jpg)
+[<img src="/assets/img/martini-riddler.jpg" width="885x">](/assets/img/martini-riddler.jpg)
 
 If the liquid reaches <span class="inline-equation" data-expr="p"></span> fraction of the way up the glass when upright, then the liquid goes <span class="inline-equation" data-expr="p^2"></span> fraction of the way up the glass on the opposite side just before it begins to pour.  
 

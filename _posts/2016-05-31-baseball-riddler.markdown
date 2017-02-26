@@ -28,7 +28,7 @@ Next, for each state, I calculated the probability that the division winning tea
 <div class="equation" data-expr="= \sum_{s \in \mathbb{S}} P\left( s \right) * \prod_{i = 1}^{i = 5} P \left( X \leq \left( x - t_{i} \right) \right) \quad where \quad X \sim B \left( 86, 0.5 \right) \quad \forall x \in \left[ 38, 162 \right]"></div>
 {% endraw %}
 
-<img src="/img/win_distribution.jpeg" style='display:block; margin-left: auto; margin-right: auto;'>
+<img src="/assets/img/win_distribution.jpeg" style='display:block; margin-left: auto; margin-right: auto;'>
 
 This computes to 88.8 wins.  This is slightly higher than the all-interdivision calculation above, which makes intuitive sense.  In the all-interdivision scenario, we could theoretically have a division leader with 0 wins (all 5 teams go winless).  However, when we have intradivision games, the division leader cannot have fewer wins than the number of intradivision games that they play divided by 2; one team's loss is another team's win.
 

@@ -14,7 +14,7 @@ Let's assume our opponent follows a simple strategy: if their strength is greate
 Right away, we can discard any cutoffs X>Y.  If our strength is [Y,X) and our opponent's strength is [0,Y), we should win $2 trillion, but, with this strategy, we settle for $1 trillion instead. We're not capitalizing on our higher strength as often as we should.  We would always prefer a strategy with X=Y over a strategy with X>Y.
 
 What about X<Y?  First, let's draw out the state space:
-[<img src="/img/gold-war.jpg" style="display:block; margin-left:auto; margin-right:auto;" width="500px">](/img/gold-war.jpg)
+[<img src="/assets/img/gold-war.jpg" style="display:block; margin-left:auto; margin-right:auto;" width="500px">](/assets/img/gold-war.jpg)
 
 We can define our expected winnings as follows:
 {% raw %}
