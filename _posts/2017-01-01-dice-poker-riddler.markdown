@@ -4,6 +4,7 @@ title:  "538 Riddler: Dice Poker Riddler"
 date:   2017-01-01
 tags: [538, fivethirtyeight, riddler, game_theory, linear_programming]
 permalink: /dice-poker-riddler
+resources: [katex]
 ---
 
 In [this week's Riddler](http://fivethirtyeight.com/features/can-you-deal-with-these-card-game-puzzles/), we have another game theory problem. We can describe each player's strategy with a 6 number tuple. For player A, <span class="inline-equation" data-expr="a_{i}"></span> represents the probability that player A raises given a roll of i.  For player B, <span class="inline-equation" data-expr="b_{i}"></span> represents the probability that player B calls a raise from player A given a roll of i.  Each player's expected winnings can be expressed as follows:

@@ -4,6 +4,7 @@ title: 'Building an Optimal Portfolio of ETFs'
 date:   2017-02-26
 tags: [investing, portfolio_optimization, etfs]
 permalink: /etf-portfolio
+resources: [plotly]
 ---
 
 Exchange traded funds (ETFs) have taken the market by storm.  Over the last few years, we’ve seen a [huge shift](http://www.icifactbook.org/ch3/16_fb_ch3) in assets towards passive investing, motivated by ETF’s low fee structure and the revelation that most active managers cannot beat their benchmark.  This shouldn't be terribly surprising.  It only takes [simple arithmetic](https://web.stanford.edu/~wfsharpe/art/active/active.htm) to demonstrate that active management is a zero-sum before fees and a losing proposition after fees. Even world reknown active investor Warren Buffet has [suggested](http://www.berkshirehathaway.com/letters/2013ltr.pdf) a simple portfolio of inexpensive index funds for the heirs to his own fortune.

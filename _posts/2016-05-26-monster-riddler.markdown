@@ -4,6 +4,7 @@ title:  "538 Riddler: Puzzle of the Monsters' Gems"
 date:   2016-05-26
 tags: [538, fivethirtyeight, riddler, probability]
 permalink: /monster-riddler
+resources: [katex]
 ---
 
 There are three ways that this game can end: slaying a rare monster (the most likely), slaying an uncommon monster, or slaying a common monster (the least likely).  I began by thinking about the probability of each of these events happening.  The probability of the game ending by slaying a rare monster can be expressed as the following:

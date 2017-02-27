@@ -4,6 +4,7 @@ title:  "538 Riddler: Puzzle of the Robot Pizza Cutter"
 date:   2016-06-26
 tags: [538, fivethirtyeight, riddler, geometry]
 permalink: /pizza-riddler
+resources: [katex]
 ---
 
 The robot's first cut will create 2 pizza slices.  The robot's second cut will create either 3 or 4 pizza slices.  The robot's third cut will create 4, 5, or 6 slices if starting with 3 slices or 5, 6, or 7 slices if starting with 4 slices.  I began by thinking about the probability of these outcomes in a specific state.  So that the geometry mimics the probability distribution, I'm setting the circumference of the pizza equal to 1.

@@ -4,6 +4,7 @@ title: "538 Riddler: The <span style='text-decoration:line-through;'>C</span>Gol
 date:   2016-12-15
 tags: [538, fivethirtyeight, riddler, game_theory]
 permalink: /gold-war-riddler
+resources: [katex]
 ---
 
 [This week's Riddler](http://fivethirtyeight.com/features/how-much-gold-would-push-you-into-a-war/) challenges us with some game theory.  Each player has a hefty $1 trillion in gold and an army whose strength is uniformly distributed between 0 and 1.  Each player knows their own army's strength but not their opponent's army's strength (obviously).  Each player then simultaneously declares "Peace" or "War".  If either player has declared "War", then war ensues, and the player with the most power army walks away with a cool $2 trillion (and the loser walks away with a big goose egg).  If both players declare "Peace", then both parties retreat with their $1 trillion in tact.  

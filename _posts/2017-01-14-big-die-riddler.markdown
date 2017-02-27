@@ -4,6 +4,7 @@ title: '538 Riddler: 100-Sided Die'
 date:   2017-01-14
 tags: [538, fivethirtyeight, riddler, probability]
 permalink: /big-die
+resources: [katex]
 ---
 This week's [Riddler](https://fivethirtyeight.com/features/how-long-will-it-take-to-blow-out-the-birthday-candles/) involves a game played with a 100-sided die (I seriously want one).  I started by thinking about the problem as an [absorbing Markov Chain](https://en.wikipedia.org/wiki/Absorbing_Markov_chain) with 101 states, 1 state representing the end of the game and 100 states for each potential previous roll. The transition matrix is the following:
 {% raw %}

@@ -4,6 +4,7 @@ title: '538 Riddler: How Big A Table Can The Carpenter Build?'
 date: 2016-09-25
 tags: [538, fivethirtyeight, riddler, geometry]
 permalink: /table-riddler
+resources: [katex]
 ---
 In [this week's Riddler](http://fivethirtyeight.com/features/how-big-a-table-can-the-carpenter-build/), the largest circular table that we can carve out of our 4x8 piece of wood with two congruent semi-circles has a radius of ~2.70 feet. We can fit the largest semi-circles in the wood by orienting them diagonally:
 

@@ -4,6 +4,7 @@ title:  "538 Riddler: Rebel vs. Stormtroopers"
 date:   2016-12-26
 tags: [538, fivethirtyeight, riddler, probability]
 permalink: /stormtrooper-riddler
+resources: [katex]
 ---
 
 In [this week's Riddler](http://fivethirtyeight.com/features/build-your-own-death-star-and-defeat-the-stormtroopers/), we are rebels trying to defeat a group of 9 advancing stormtroopers.  Fortunately for us, we are more accurate than the notoriously inaccurate stormtroopers, and the stormtroopers are clumped together, making them easy to pick off.

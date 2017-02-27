@@ -4,6 +4,7 @@ title: '538 Riddler: Traitorous Generals'
 date: 2016-07-30
 tags: [538, fivethirtyeight, riddler, logic]
 permalink: /traitorous-generals
+resources: [katex]
 ---
 
 We begin by selecting one general at random.  Our goal will be to determine if this specific general is loyal or traitorous, which we can figure out by polling the other generals.  As we go around the circle, there are two stop conditions:

@@ -4,6 +4,7 @@ title:  "538 Riddler: Puzzle of the Picky Eater"
 date:   2016-06-22
 tags: [538, fivethirtyeight, riddler, geometry]
 permalink: /sandwich-riddler
+resources: [katex]
 ---
 
 I found it easiest to think about this problem in terms of polar coordinates.  The furthest point that we can eat along trajectory <span class="inline-equation" data-expr="\theta"></span> is the following:

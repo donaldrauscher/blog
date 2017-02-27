@@ -4,6 +4,7 @@ title:  "538 Riddler: Untangling the Tangled Wires"
 date:   2016-12-17
 tags: [538, fivethirtyeight, riddler, logic]
 permalink: /untangle-riddler
+resources: [katex]
 ---
 
 The strategy for [this week's Riddler](http://fivethirtyeight.com/features/everythings-mixed-up-can-you-sort-it-all-out/) is to continuously split the wires into halves until only pairs remain.  Then, we form circuits between the pairs to pinpoint individual wires.  Using this approach, we can determine the optimal number of trips when N is a power of 2.  For <span class="inline-equation" data-expr="N = 2^{2} = 4"></span>, we need 2 trips.  For <span class="inline-equation" data-expr="N = 2^{3} = 8"></span>, we need 3 trips.  For <span class="inline-equation" data-expr="N = 2^{4} = 16"></span>, we need 4 trips.  Etc.

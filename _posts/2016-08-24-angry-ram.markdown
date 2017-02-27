@@ -4,6 +4,7 @@ title: '538 Riddler: Escaping the Angry Ram'
 date: 2016-08-24
 tags: [538, fivethirtyeight, riddler, diffeq]
 permalink: /angry-ram-riddler
+resources: [katex]
 ---
 
 Link to [this week's Riddler](http://fivethirtyeight.com/features/can-you-outrun-the-angry-ram-coming-right-for-oh-god/).  I began by forming expressions for two known facts of the problem.   equalities.  Firstly, we know that the derivative of the ram's path will be the slope of the line passing through the ram's current position (x,y) and the location of the fleeing person (1,z). Secondly, by construction, we know that the distance travelled by the ram (which we express with a [line integral](https://en.wikipedia.org/wiki/Arc_length#Finding_arc_lengths_by_integrating)) is some multiple of the distance travelled by the human (z).  These can be expressed as follows:

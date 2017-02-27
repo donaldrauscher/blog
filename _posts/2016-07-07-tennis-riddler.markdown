@@ -4,6 +4,7 @@ title:  "538 Riddler: Defeating Roger Federer"
 date:   2016-07-07
 tags: [538, fivethirtyeight, riddler, probability]
 permalink: /tennis-riddler
+resources: [katex]
 ---
 
 I began [this challenge](http://fivethirtyeight.com/features/can-you-figure-out-how-to-beat-roger-federer-at-wimbledon/) at the obvious starting point: I win my first 71 points against Roger.  This puts me up 2 sets to 0, up 5-Nill in the 3rd, and winning 40-Love in what is possibly the final game of the match.  Things look pretty good; I've got a triple match point.  However, Roger's greatness cannot be underestimated, even in his twilight years.  In my Monte Carlo simulation, I win just 287 of 10K games starting here (2.87%).  All of my victories come from clinching that 6th game in the 3rd set.  If I lose that game, I'm toast.  With a 1% probability of winning each point, there's virtually no chance that I claw my way back.

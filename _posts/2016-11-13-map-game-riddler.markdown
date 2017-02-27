@@ -4,6 +4,7 @@ title:  "538 Riddler: Allison, Bob, and the Technicolor Dream Map"
 date:   2016-11-13
 tags: [538, fivethirtyeight, riddler]
 permalink: /map-game-riddler
+resources: [jquery]
 ---
 
 <svg id="map-game-riddler" style="display:block; margin-left:auto; margin-right:auto;" width="580" height="400" xmlns="http://www.w3.org/2000/svg">

@@ -4,6 +4,7 @@ title: '538 Riddler: A Variation of the Drunkard''s Walk ... In a Bar'
 date:   2016-07-14
 tags: [538, fivethirtyeight, riddler, probability]
 permalink: /bar-riddler
+resources: [katex]
 ---
 This week’s [Riddler](http://fivethirtyeight.com/features/how-long-will-you-be-stuck-playing-this-bar-game/) is a variation on the well-known OR problem, [the drunkard’s walk](https://en.wikipedia.org/wiki/Random_walk).  We can model this problem as an absorbing Markov Chain with X+Y+1 states.  The transition probability matrix is the following:
 {% raw %}

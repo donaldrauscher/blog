@@ -4,6 +4,7 @@ title:  "538 Riddler: Chance of Being THE Deciding Vote"
 date:   2016-11-06
 tags: [538, fivethirtyeight, riddler, probability]
 permalink: /election-riddler
+resources: [katex]
 ---
 
 [This week's Riddler](http://fivethirtyeight.com/features/a-puzzle-will-you-yes-you-decide-the-election/) tasked us with calculating the probability of being the deciding vote in a toss-up election.  For simplicity, I'm going to assume that there are an even number of other voters (an odd number of total voters).  We can model the number of votes for "our" candidate as a binominal random variable, making the probability of a split election simply:

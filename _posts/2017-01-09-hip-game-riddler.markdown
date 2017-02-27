@@ -4,6 +4,7 @@ title:  "538 Riddler: Martin Gardner's 'Hip' Game"
 date:   2017-01-09
 tags: [538, fivethirtyeight, riddler, linear_programming]
 permalink: /hip-game-riddler
+resources: [katex]
 ---
 
 I began [this week's Riddler](https://fivethirtyeight.com/features/dont-throw-out-that-calendar/) by deriving an expression for the number of squares on a n-sized board:
