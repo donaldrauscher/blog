@@ -6,7 +6,7 @@
     katex.render(eqn, node, params);
   }
 
-  document.addEventListener("DOMContentLoaded", function(event) {
+  onload = function(e){
     // grab all elements in DOM with the class 'equation' or 'inline-equation'
     var inline_eq = document.getElementsByClassName("inline-equation");
     var eq = document.getElementsByClassName("equation");
@@ -14,5 +14,5 @@
     // for each element, render the expression attribute
     Array.prototype.forEach.call(inline_eq, function(el) { katex_render(el, {}); });
     Array.prototype.forEach.call(eq, function(el) { katex_render(el, { displayMode: true }); });
-  });
+  };
 </script>
