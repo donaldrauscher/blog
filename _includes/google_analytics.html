@@ -7,12 +7,21 @@
   ga('create', '{{ site.google_analytics }}', 'auto');
   ga('send', 'pageview');
 
-  $(document).ready(function(){
-    $(".social-share-element").click(function() {
-      ga('send', 'event', $(this).attr("social-network"), $(this).attr("social-action"), $(this).attr("social-target"));
+  onload = function(e){
+    // add events for sharing
+    elements = document.getElementsByClassName("social-share-element")
+    Array.prototype.forEach.call(elements, function(x) {
+      x.addEventListener("click", function(){
+        ga('send', 'event', x.getAttribute("social-network"), x.getAttribute("social-action"), x.getAttribute("social-target"));
+      });
     });
-    $(".about-body-link").click(function() {
-      ga('send', 'event', $(this).attr("link"), "click");
+
+    // add events for 'about me' clicks
+    elements = document.getElementsByClassName("about-body-link")
+    Array.prototype.forEach.call(elements, function(x) {
+      x.addEventListener("click", function(){
+        ga('send', 'event', x.getAttribute("link"), "click");
+      });
     });
-  });
+  }
 </script>
