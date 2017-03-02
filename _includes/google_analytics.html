@@ -7,7 +7,7 @@
   ga('create', '{{ site.google_analytics }}', 'auto');
   ga('send', 'pageview');
 
-  onload = function(e){
+  document.addEventListener("DOMContentLoaded", function(){
     // add events for sharing
     elements = document.getElementsByClassName("social-share-element")
     Array.prototype.forEach.call(elements, function(x) {
@@ -23,5 +23,5 @@
         ga('send', 'event', x.getAttribute("link"), "click");
       });
     });
-  }
+  });
 </script>
