@@ -2,7 +2,7 @@
 layout: post
 title: 'Analyzing Citi Bike Data w/ BigQuery'
 date:   2017-03-06
-tags: [citibike, gcc, bigquery, visualization]
+tags: [citibike, gcp, bigquery, visualization]
 permalink: /citi-bike
 ---
 
