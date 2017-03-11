@@ -1,10 +1,12 @@
 {% assign add_resource = false %}
-{% for post in paginator.posts %}
-  {% if post.resources contains resource %}
-    {% assign add_resource = true %}
-    {% break %}
-  {% endif %}
-{% endfor %}
+{% if paginator.posts %}
+  {% for post in paginator.posts %}
+    {% if post.resources contains resource %}
+      {% assign add_resource = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
 {% if page.resources contains resource %}
   {% assign add_resource = true %}
 {% endif %}
