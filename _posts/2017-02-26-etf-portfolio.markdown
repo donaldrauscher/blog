@@ -23,6 +23,9 @@ A well-constructed portfolio of ETFs can give you similar return with less risk 
 
 ## Results
 
+Overall, all 4 of my portfolios generated higher Sharpe ratios (1.6-1.8 vs. 1.1-1.3) and lower draw-downs (2%-5% vs. 9%-13%) but lower returns than the SPY and MDY, which both have returned a staggering 13.2% annually over the last 5 years.  This isn't totally surprising.  The model, to the extent that it can, tries to balance systematic market risk and factor risk, resulting in lower betas.  Normally, this would be a good thing, except our 5 year test period sits squarely in the middle of the [second longest bull market ever](http://seekingalpha.com/article/3987722-2nd-longest-bull-market-history).  I think we can expect more modest returns for the benchmarks moving forward; my model projects 8.1% and 8.9% for the SPY and MDY respectively.  Expected Sharpe ratios for my portfolios (1.4-1.5) are nearly 3x higher than the benchmarks (0.5)!  My target return 12% portfolio (TR12) has a beta of just 0.51 and positive loadings on size, profitability, investment, momentum, and accrual factors.  
+
+Portfolio Performance Results:
 <table class="pretty">
   <thead>
     <tr><th></th><th colspan="3">Expected</th><th colspan="4">Actual (Last 5 Years)</th></tr>
@@ -44,7 +47,23 @@ A well-constructed portfolio of ETFs can give you similar return with less risk 
   </tbody>
 </table>
 
-Overall, all 4 of my portfolios generated higher Sharpe ratios (1.6-1.8 vs. 1.1-1.3) and lower draw-downs (2%-5% vs. 9%-13%) but lower returns than the SPY and MDY, which both have returned a staggering 13.2% annually over the last 5 years.  This isn't totally surprising.  The model, to the extent that it can, tries to balance systematic market risk and factor risk, resulting in lower betas.  Normally, this would be a good thing, except our 5 year test period sits squarely in the middle of the [second longest bull market ever](http://seekingalpha.com/article/3987722-2nd-longest-bull-market-history).  I think we can expect more modest returns for the benchmarks moving forward; my model projects 8.1% and 8.9% for the SPY and MDY respectively.  Expected Sharpe ratios for my portfolios (1.4-1.5) are nearly 3x higher than the benchmarks (0.5)!  My target return 12% portfolio (TR12) has a beta of just 0.51 and positive loadings on size, profitability, investment, momentum, and accrual factors.  
+Portfolio Asset Weights:
+<table class="pretty">
+  <thead>
+    <tr><th>Asset</th><th>TR06</th><th>TR08</th><th>TR10</th><th>TR12</th></tr>
+  </thead>
+  <tbody>
+  {% for asset in site.data.etf_portfolio_weights %}
+    <tr>
+      <td>{{ asset.Ticker }}</td>
+      <td>{{ asset.TR06 | times: 100 | round:1 }}%</td>
+      <td>{{ asset.TR08 | times: 100 | round:1 }}%</td>
+      <td>{{ asset.TR10 | times: 100 | round:1 }}</td>
+      <td>{{ asset.TR12 | times: 100 | round:1 }}%</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
 
 All of my code is posted on my [GitHub](https://github.com/donaldrauscher/etf-portfolio).  The universe of ETFs analyzed and their tilts can be downloaded <a href="assets/data/etf_portfolio/etf_db.csv" target="_blank">here</a> and <a href="assets/data/etf_portfolio/etf_tilts.csv" target="_blank">here</a>.  Cheers!
 
