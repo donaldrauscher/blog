@@ -4,6 +4,7 @@ title: 'Analyzing Citi Bike Data w/ BigQuery'
 date:   2017-03-06
 tags: [citibike, gcp, bigquery, visualization]
 permalink: /citi-bike
+resources: []
 ---
 
 I've recently started using Google Cloud Platform for some of my big data analyses.  In particular, I have been playing with BigQuery.  Unlike AWS Redshift, BigQuery is a fully elastic, multi-tenant database.  It is very easy to setup and gives you essentially infinite scale!  I decided to take BigQuery for a spin with an analysis that I've always been interested in doing: *understanding how Citi Bike re-balances its inventory*.
