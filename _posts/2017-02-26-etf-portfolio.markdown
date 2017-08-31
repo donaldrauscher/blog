@@ -70,8 +70,8 @@ All of my code is posted on my [GitHub](https://github.com/donaldrauscher/etf-po
 <div id="risk_vs_return" style="width: 800; height: 500;"></div>
 <script>
 
-  Plotly.d3.csv("assets/data/etf_portfolio/viz1_1.csv", function(data1){
-    Plotly.d3.csv("assets/data/etf_portfolio/viz1_2.csv", function(data2){
+  Plotly.d3.csv("/assets/data/etf_portfolio/viz1_1.csv", function(data1){
+    Plotly.d3.csv("/assets/data/etf_portfolio/viz1_2.csv", function(data2){
 
       // pull data from CSVs into arrays
       var x = [], y = [], size = [], opacity = [], label = [], color = [];
@@ -139,7 +139,7 @@ All of my code is posted on my [GitHub](https://github.com/donaldrauscher/etf-po
 
 <div id="cumulative_returns" style="width: 800; height: 500;"></div>
 <script>
-  Plotly.d3.csv("assets/data/etf_portfolio/viz2.csv", function(data){
+  Plotly.d3.csv("/assets/data/etf_portfolio/viz2.csv", function(data){
 
     // organize by column (d3.csv reads in as array of rows)
     data2 = {}
@@ -173,7 +173,7 @@ All of my code is posted on my [GitHub](https://github.com/donaldrauscher/etf-po
 
 <div id="weights" style="width: 800; height: 350;"></div>
 <script>
-  Plotly.d3.csv("assets/data/etf_portfolio/viz3.csv", function(data){
+  Plotly.d3.csv("/assets/data/etf_portfolio/viz3.csv", function(data){
 
     // organize by column (d3.csv reads in as array of rows)
     data2 = {};
@@ -223,7 +223,7 @@ All of my code is posted on my [GitHub](https://github.com/donaldrauscher/etf-po
 
 <div id="tilts" style="width: 800; height: 500;"></div>
 <script>
-  Plotly.d3.csv("assets/data/etf_portfolio/viz4.csv", function(data){
+  Plotly.d3.csv("/assets/data/etf_portfolio/viz4.csv", function(data){
 
     // make trace for each row
     var traces = []
