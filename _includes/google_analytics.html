@@ -5,7 +5,19 @@
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
   ga('create', '{{ site.google_analytics }}', 'auto');
-  ga('require', 'ga_route_plugin');
+
+  ga(function(tracker) {
+      var originalSendHitTask = tracker.get('sendHitTask');
+      tracker.set('sendHitTask', function(model) {
+          var payLoad = model.get('hitPayload');
+          originalSendHitTask(model);
+          var routeRequest = new XMLHttpRequest();
+          var routePath = "https://us-central1-blog-180218.cloudfunctions.net/ingestGA";
+          routeRequest.open('GET', routePath + "?" + payLoad, true);
+          routeRequest.send();
+      });
+  });
+
   ga('send', 'pageview');
 
   document.addEventListener("DOMContentLoaded", function(){
@@ -26,4 +38,3 @@
     });
   });
 </script>
-<script async src="https://storage.googleapis.com/djr_cloud_functions/ga_route.js"></script>
