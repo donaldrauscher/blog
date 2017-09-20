@@ -8,12 +8,12 @@ permalink: /ga-bq-stream
 
 I have been using Google Analytics for a while for my own projects. The Google Analytics interface is great for helping you track activity on your site at a high-level. However, there are some cases in which having access to raw GA events may be helpful. For instance, maybe you record a unique identifier in the user_id parameters and want to tie Google Analytics activity to data in another system, e.g. transactions.
 
-Google Analytics 360 offers easy export of GA events into BigQuery.  However, GA360 is comically expensive: [$150K / year](https://www.quora.com/What-is-the-cost-of-Google-Analytics-360-Suite)!  With this in mind, I sought to create my own solution, which was surprisingly easy!  First, I created a Google Cloud Function to receive these events and ingest them into BigQuery.  Secondly, I created some client-side JavaScript to also ping my Cloud Function when uploading events to Google Analytics (e.g. piggybacking the ['sendHitTask' task](https://developers.google.com/analytics/devguides/collection/analyticsjs/tasks)).
+Google Analytics 360 offers easy export of GA events into BigQuery.  However, GA360 is comically expensive: [$150K / year](https://www.quora.com/What-is-the-cost-of-Google-Analytics-360-Suite)!  With this in mind, I sought to create my own solution, which was surprisingly easy.  First, I created a Google Cloud Function to receive these events and ingest them into BigQuery.  Second, I created some client-side JavaScript to also ping my Cloud Function when uploading events to Google Analytics (e.g. piggybacking the ['sendHitTask' task](https://developers.google.com/analytics/devguides/collection/analyticsjs/tasks)).
 
 A few additional notes:
 * Google Analytics has a lot of parameters that can be set!  They are detailed [here](https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters).  My code is only syncing a subset of these, a specific subset that I care about.  You will need to edit this and the schema for your table in BigQuery if you want to track additional fields.
 * The XMLHttpRequest function, which is what we're using to call our Cloud Function, can make cross-origin HTTP requests but these requests are [controlled by something called CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) (Cross-Origin Resource Sharing). Since our request is a simple GET request, there isn't a pre-flight OPTIONS request; we can simply update our Cloud Function to add a Access-Control-Allow-Origin header which restricts access to the resource to requests from our designated site.
-* Cloud Functions are super easy to build and deploy. I highly recommend the [Local Emulator](https://cloud.google.com/functions/docs/emulator) for local testing prior to deployment.  My only complaint is that they only work in Node.js, which I needed to familiarize myself with.  Amazon Lambda Functions can be written in [Java, Node.js, Python, or C#](https://aws.amazon.com/lambda/faqs/)!
+* Cloud Functions are super easy to build and deploy. I highly recommend the [Local Emulator](https://cloud.google.com/functions/docs/emulator) for local testing prior to deployment.  My only complaint is that they only work in Node.js, which I needed to familiarize myself with.  Amazon Lambda Functions, by contrast, can be written in [Java, Node.js, Python, or C#](https://aws.amazon.com/lambda/faqs/)!
 * If loading client-side JS as a GA plug-in, ga('require', 'ga_route_plugin') must come *after* the ga('create', ...) command and *before* the ga('send', 'pageview') command.
 * Make sure to update the REGION and PROJECT values in ga_route.js and the URL parameter in config.json
 
@@ -33,42 +33,49 @@ function timestamp(){
 }
 
 exports.ingestGA = function ingestGA (req, res) {
-  res.header('Access-Control-Allow-Origin', config.ORIGIN);
-
-  var dataset = bigquery.dataset(config.DATASET);
-  var table = dataset.table(config.TABLE);
-  var params = req.query;
-
-  var row = {
-    json: {
-      version: params.v,
-      tracking_id: params.tid,
-      document_location: params.dl,
-      hit_type: params.t,
-      user_id: params.uid,
-      client_id: params.cid,
-      user_language: params.ul,
-      event_category: params.ec,
-      event_action: params.ea,
-      event_label: params.el,
-      event_value: params.ev,
-      timestamp: timestamp()
-    }
-  };
-  var options = {
-    raw: true
-  };
-
-  function insertHandler(err, apiResponse){
-    if (err){
-      res.status(500).send(err);
-    }
-    else {
-      res.status(200).send(apiResponse);
-    }
+  origin = req.get("origin");
+  if (origin != config.URL){
+    res.header('Access-Control-Allow-Origin', '*');
+    res.status(403).send(`Requests from ${origin} are not allowed!`);
   }
+  else {
+    res.header('Access-Control-Allow-Origin', config.URL);
 
-  table.insert(row, options, insertHandler);
+    var dataset = bigquery.dataset(config.DATASET);
+    var table = dataset.table(config.TABLE);
+    var params = req.query;
+
+    var row = {
+      json: {
+        version: params.v,
+        tracking_id: params.tid,
+        document_location: params.dl,
+        hit_type: params.t,
+        user_id: params.uid,
+        client_id: params.cid,
+        user_language: params.ul,
+        event_category: params.ec,
+        event_action: params.ea,
+        event_label: params.el,
+        event_value: params.ev,
+        timestamp: timestamp()
+      }
+    };
+    var options = {
+      raw: true
+    };
+
+    function insertHandler(err, apiResponse){
+      if (err){
+        res.status(400).send(err);
+      }
+      else {
+        res.status(200).send(apiResponse);
+      }
+    }
+
+    table.insert(row, options, insertHandler);
+  }
 };
 ```
 
