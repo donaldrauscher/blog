@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'How to Deploy a Shiny App on Google Container Engine'
-date:   2017-10-01
+date:   2017-10-02
 tags: [gcp, docker, containers, shiny, farkle]
 permalink: /shiny-on-docker
 resources: [katex]
