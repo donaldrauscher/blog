@@ -7,7 +7,7 @@ permalink: /shiny-on-docker
 resources: [katex]
 ---
 
-[Shiny](https://shiny.rstudio.com/) is an awesome tool for building interactive apps powered by R. There are a couple options for [deploying](https://shiny.rstudio.com/deploy/) Shiny apps.  You can deploy to [Shinyapps.io](http://www.shinyapps.io/).  You can also deploy on your own machine using open source Shiny Server.  This tutorial shows how to setup a Docker container for a Shiny App and deploy on Google Container Engine using Kubernetes.  And because deploying the "Hello World" example is entirely unsatisfying, I chose to build an app to help guide strategy for a game I recently played.
+[Shiny](https://shiny.rstudio.com/) is an awesome tool for building interactive apps powered by R. There are a couple options for [deploying](https://shiny.rstudio.com/deploy/) Shiny apps.  You can deploy to [Shinyapps.io](http://www.shinyapps.io/).  You can also deploy on your own machine using open source Shiny Server.  This tutorial shows how to setup a Docker container for a Shiny app and deploy on Google Container Engine using Kubernetes.  And because deploying the "Hello World" example is entirely unsatisfying, I chose to build an app to help guide strategy for a game I recently played.
 
 ## Farkle - A Game of <span style='text-decoration:line-through;'>Guts & Luck</span> Probability
 
@@ -15,10 +15,23 @@ My wife and I recently stumbled upon this game in one of our relative's game clo
 
 Any dice that don't count towards your score can be rolled again.  However, and this is the catch, if you score no points on a roll, you lose all points accumulated up to that point.  So in the above example, we could choose to roll 1 die (from the non-scoring 4), but we will lose the 450 points that we've banked if we don't roll a 1 or a 5 (the only scoring options with a single die).
 
-If you manage to use score using all 6 of the dice, you get to start rolling again with all 6 dice. A short-sighted player may observe that <span class="inline-equation" data-expr="\frac{2}{3}*0+\frac{1}{6}*500+\frac{1}{6}*550 = 175 < 450"></span> and thus not be willing to risk rolling that last die.  However, those 500 and 550 scenarios are too low!  The average 6 dice roll results in 0 points just 2.3% of the time and an average of 397.7 points if not zero.  Incorporating this into our expectation, the average number of points on the next two rolls is:
-<div class="equation" data-expr="\left(\frac{2}{3} + \frac{1}{3}*0.023\right)*0+\frac{1}{6}*(1 - 0.023)(500+397.7)+\frac{1}{6}*(1 - 0.023)*(550+397.7) = 300.5"></div>
+Here is a summary of the expected number of points and the probability of scoring zero points on a single roll:
+<table class="pretty">
+<tr><th>Dice Remaining</th><th>P(Points = 0)</th><th>E[Points]</th></tr>
+<tr><td>1</td><td>66.7%</td><td>25.0</td></tr>
+<tr><td>2</td><td>44.4%</td><td>50.0</td></tr>
+<tr><td>3</td><td>27.8%</td><td>83.6</td></tr>
+<tr><td>4</td><td>15.7%</td><td>132.7</td></tr>
+<tr><td>5</td><td>7.7%</td><td>203.3</td></tr>
+<tr><td>6</td><td>2.3%</td><td>388.5</td></tr>
+</table>
 
-And this is still conservative.  You have the option to roll a third time after that second roll, when prudent, which will increase the expected number of points further.  Though it still doesn't make sense to roll that last die, it's much closer than it appeared at face value.
+As expected, the more dice we roll, the more likely we are to _not_ get zero points.  Furthermore, since more high scoring options are available with each die, each incremental die gives us more expected points than the last.
+
+If you manage to score using all 6 of the dice, you get to start rolling again with all 6 dice. A short-sighted player may observe that <span class="inline-equation" data-expr="\frac{2}{3}*0+\frac{1}{6}*500+\frac{1}{6}*550 = 175 < 450"></span> and thus not be willing to risk rolling that last die.  However, those 500 and 550 scenarios are too low!  The average 6 dice roll results in 0 points just 2.3% of the time and an average of <span class="inline-equation" data-expr="\frac{388.5}{1-0.023} = 397.7"></span> points if not zero.  Incorporating this into our expectation, the average number of points on the next two rolls is
+actually <span class="inline-equation" data-expr="\frac{1}{6}*(1 - 0.023)(500+550+2*397.7) = 300.5"></span>.  And this is still conservative.  You have the option to roll a third time after that second roll, when prudent, which will increase the expected number of points further.  Though it still doesn't make sense to roll that last die, it's much closer than it appeared at face value.
+
+In summary, at any point in time, we are making a decision about whether to continue rolling the dice or stop.  The key parameters are (1) how many points we have in the bank and (2) how many dice are remaining.  A good decision will be based not just on what might happen this roll but also on subsequent rolls.  We are going to make a Shiny app to help us make these decisions.
 
 ## Building & Deploying Our Shiny App
 
@@ -57,22 +70,9 @@ kubectl get service
 
 That final command will return the external IP for our Service.  Simply go to http://${IP_ADDR}/farkle to verify that its working.
 
-## Some Farkle Insights
+## Some Final Farkle Insights
 
-Here is a summary of the expected number of points and the probability of scoring zero points on a single roll:
-<table class="pretty">
-<tr><th>Dice Remaining</th><th>P(Points = 0)</th><th>E[Points]</th></tr>
-<tr><td>1</td><td>66.7%</td><td>25.0</td></tr>
-<tr><td>2</td><td>44.4%</td><td>50.0</td></tr>
-<tr><td>3</td><td>27.8%</td><td>83.6</td></tr>
-<tr><td>4</td><td>15.7%</td><td>132.7</td></tr>
-<tr><td>5</td><td>7.7%</td><td>203.3</td></tr>
-<tr><td>6</td><td>2.3%</td><td>388.5</td></tr>
-</table>
-
-As expected, the more dice we roll, the more likely we are to _not_ get zero points.  Furthermore, since more high scoring options are available with each die, each incremental die gives us more expected points than the last.
-
-But the really important question is this: if I have X dice remaining, how many points must I have in the bank to NOT roll?  Using our Shiny app (3 roll look-forward), I estimated these numbers:
+The really important question is this: if I have X dice remaining, how many points must I have in the bank to NOT roll?  Using our Shiny app (3 roll look-forward), I estimated these numbers:
 <table class="pretty">
 <tr><th>Dice Remaining</th><th>Bank Threshold to Stop Rolling</th></tr>
 <tr><td>1</td><td>262</td></tr>
