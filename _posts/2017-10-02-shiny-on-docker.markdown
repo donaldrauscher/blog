@@ -92,7 +92,7 @@ The really important question is this: if I have X dice remaining, how many poin
 <tr><td>6</td><td>16,785</td></tr>
 </table>
 
-The game is played to 10,000 points (with the lagging player getting a rebuttal opportunity). So there is virtually no scenario in which you would not roll 6 dice when given the opportunity!  You can find a link to all of my work [here](https://github.com/donaldrauscher/shiny-farkle) and a link to the app deployed using this methodology [here](http://shiny.donaldrauscher.com/farkle/)  Cheers!
+The game is played to 10,000 points (with the lagging player getting a rebuttal opportunity). So there is virtually no scenario in which you would not roll 6 dice when given the opportunity!  You can find a link to all of my work [here](https://github.com/donaldrauscher/shiny-farkle) and a link to the app deployed using this methodology [here](http://farkle.shiny.donaldrauscher.com)  Cheers!
 
 Note #1: A big simplification that I make on game play is that _all dice that can be scored will be scored_.  In reality, players have the option not to score all dice.  For instance, if I roll three 1s, I can choose to bank one 1 and roll the 5 remaining dice, which, using our app, makes sense.  100 in the bank and 5 remaining dice has a 352.0 expectation; 200 in the bank and 4 dice remaining has a 329.0 expectation.
 
