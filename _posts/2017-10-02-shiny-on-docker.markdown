@@ -2,7 +2,7 @@
 layout: post
 title: 'How to Deploy a Shiny App on Google Container Engine'
 date:   2017-10-02
-tags: [gcp, docker, containers, shiny, farkle]
+tags: [gcp, docker, containers, kubernetes, shiny, farkle]
 permalink: /shiny-on-docker
 resources: [katex]
 ---
@@ -35,40 +35,49 @@ In summary, at any point in time, we are making a decision about whether to cont
 
 ## Building & Deploying Our Shiny App
 
-I started by doing a little up-front work to generate the state space of possible rolls.  This computation is not reactive and only needs to be performed once at app start-up.  Next, I created a recursive `play` function which determines the optional strategy (roll or stop) with parameters for how many points have been banked so far and how many dice are remaining.  I gave the function a max recursion depth to limit computation time.  I figured this is okay since (1) turns with a large number of rolls are quite improbable and thus contribute less to our decision making and (2) players become increasingly less likely to continue rolling as they accumulate more points since they have more to lose.  Finally, I made the Shiny app. Building Shiny apps involves laying out inputs, outputs, and the logic that ties them together.  This app is very simple.  Just 26 lines of R!
+I started by doing a little up-front work to generate the state space of possible rolls.  This computation is not reactive and only needs to be performed once prior to app initialization.  Next, I created a recursive `play` function which determines the optional strategy (roll or stop) with parameters for how many points have been banked so far and how many dice are remaining.  I gave the function a max recursion depth to limit computation time.  I figured this is okay since (1) turns with a large number of rolls are quite improbable and thus contribute less to our decision making and (2) players become increasingly less likely to continue rolling as they accumulate more points since they have more to lose.  Finally, I made the Shiny app. Building Shiny apps involves laying out inputs, outputs, and the logic that ties them together.  This app is very simple.  Just 26 lines of R!
 
-On GCP, one option for deploying our Shiny app is spinning up a Compute Instance, installing all the necessary software (R, Shiny server, and other necessary R packages), and downloading the code for our app.  An easier option is to instead use a container like Docker. Fundamentally, containers allow developers to separate applications from the environments in which they run.  Containers package an application and its dependencies into a single manifest (that can be version controlled) that runs directly on top of an OS kernel.
+On GCP, one option for deploying our Shiny app is spinning up a Compute Instance, installing all the necessary software (R, Shiny server, and other necessary R packages), and downloading the code for our app.  A more organized approach is to instead use a container like Docker. Fundamentally, containers allow developers to separate applications from the environments in which they run.  Containers package an application and its dependencies into a single manifest (that can be version controlled) that runs directly on top of an OS kernel.
 
-Firstly, we need to setup a [Dockerfile](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/) for our Docker image.  Since we can easily [leverage other images](https://docs.docker.com/engine/reference/builder/#from) shared on the Docker hub, this is very easy!
+Firstly, we need to setup a Dockerfile for our Docker image.  I extended [this image](https://hub.docker.com/r/rocker/shiny/) which installs R and Shiny Server.  After that, I simply copy my app into the correct directory and do some initialization.
 ``` bash
+# start with image with R and Shiny server installed
 FROM rocker/shiny
-RUN R -e "install.packages(c('dplyr'), repos='http://cran.rstudio.com/')"
-COPY ./shiny/ /srv/shiny-server/farkle/
-```
-Note: I'm extending [this image](https://hub.docker.com/r/rocker/shiny/) on Docker hub which sets up Shiny server.  After that, I just install the dplyr package and copy my app to the /srv/shiny-server directory.  So easy!
 
-Next, we're going to run a few commands to make our Docker image and verify that it works:
+# copy files into correct directories
+COPY ./shiny/ /srv/shiny-server/farkle/
+RUN mv /srv/shiny-server/farkle/shiny-server.conf /etc/shiny-server/shiny-server.conf
+
+# initialize some inputs for the app
+WORKDIR /srv/shiny-server/farkle/
+RUN mkdir -p data && \
+  R -e "install.packages(c('dplyr'), repos='http://cran.rstudio.com/')" && \
+  Rscript init.R
+```
+
+Next, a few commands to make our Docker image and verify that it works:
 ``` bash
 docker build -t farkle:latest .
-docker images ls
-docker run --rm -p 3838:3838 farkle:latest # for testing locally
+docker run --rm -p 3838:3838 farkle:latest # test that it works locally
 ```
 
-Finally, we're going to deploy this image to Google Container Engine.  Google has a great tutorial [here](https://cloud.google.com/container-engine/docs/tutorials/hello-app) on how to do this.  In short, we're going to upload our Docker image to Google Container Registry, create a container cluster running Kubernetes, deploy our image to this cluster, and make our application externally accessible using a Service.  I also created an static IP for my cluster which I hooked up to my domain using an A Record.
-
+Then tag the image and push it to Google Container Repository:
 ``` bash
 export PROJECT_ID=$(gcloud config get-value project -q)
 docker tag farkle gcr.io/${PROJECT_ID}/shiny-farkle:latest
-gcloud docker -- push gcr.io/${PROJECT_ID}/shiny-farkle:latest
-gcloud container clusters create shiny-farkle --num-nodes=3
-kubectl run shiny-farkle --image=gcr.io/${PROJECT_ID}/shiny-farkle:latest --port 3838
-gcloud compute addresses create shiny-farkle-ip --region us-central1
-export SHINY_IP=$(gcloud compute addresses describe shiny-ip --region us-central1 --format json | python -c "import sys,json; print(json.load(sys.stdin)['address'])")
-kubectl expose deployment shiny-farkle --type=LoadBalancer --port 80 --target-port 3838 --load-balancer-ip=${SHINY_IP}
-kubectl get service
+gcloud docker -- push gcr.io/${PROJECT_ID}/shiny-farkle
+gcloud container images list-tags gcr.io/${PROJECT_ID}/shiny-farkle
 ```
 
-That final command will return the external IP for our Service.  Simply go to http://${IP_ADDR}/farkle to verify that its working.
+Finally, we're going to deploy this image on Google Container Engine using Kubernetes.  After creating the cluster, we set up a deployment for our image, a service, and an ingress, hooked up to a static IP, to make the service externally accessible.
+``` bash
+gcloud container clusters create shiny-cluster --num-nodes=3
+gcloud compute addresses create shiny-static-ip --global
+kubectl apply -f k8s/shiny-farkle-deploy.yaml
+kubectl apply -f k8s/shiny-farkle-service.yaml
+kubectl apply -f k8s/shiny-ingress.yaml
+```
+Note: I set up the ingress to route traffic based on host.  We can add additional apps to our cluster by setting up another service/deployment and adding another routing rule to our ingress.
 
 ## Some Final Farkle Insights
 
