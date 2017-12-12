@@ -68,8 +68,8 @@ You can see this code implemented [here](https://github.com/donaldrauscher/hospi
 
 <table class="pretty">
 <tr><th>Model</th><th>AUC</th></tr>
-<tr><td>Model Stack</td><td>0.696647011551</td></tr>
-<tr><td>Simple Average</td><td>0.695085919299</td></tr>
+<tr><td>LR+RF+XGB Model Stack</td><td>0.696647011551</td></tr>
+<tr><td>LR+RF+XGB Average</td><td>0.695085919299</td></tr>
 <tr><td>Logistic Regression</td><td>0.683648706712</td></tr>
 <tr><td>Random Forest</td><td>0.694950165587</td></tr>
 <tr><td>XGBoost</td><td>0.689625026265</td></tr>
