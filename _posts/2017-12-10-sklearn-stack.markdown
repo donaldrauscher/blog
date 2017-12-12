@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Model Stacking using Sklearn''s VotingClassifier'
+title: 'Model Stacking with Sklearn'
 date:   2017-12-10
 tags: [python, sklearn, machine_learning, model_stacking]
 permalink: /sklearn-stack
