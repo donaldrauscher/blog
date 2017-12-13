@@ -65,11 +65,11 @@ You can see this code implemented [here](https://github.com/donaldrauscher/hospi
 
 <table class="pretty">
 <tr><th>Model</th><th>AUC</th></tr>
-<tr><td>LR+RF+XGB Model Stack</td><td>0.696647011551</td></tr>
-<tr><td>LR+RF+XGB Average</td><td>0.695085919299</td></tr>
-<tr><td>Logistic Regression</td><td>0.683648706712</td></tr>
-<tr><td>Random Forest</td><td>0.694950165587</td></tr>
-<tr><td>XGBoost</td><td>0.689625026265</td></tr>
+<tr><td>LR+RF+XGB Model Stack</td><td>0.697156452633</td></tr>
+<tr><td>LR+RF+XGB Average</td><td>0.696020049702</td></tr>
+<tr><td>Random Forest</td><td>0.693003188754</td></tr>
+<tr><td>XGBoost</td><td>0.692441123617</td></tr>
+<tr><td>Logistic Regression</td><td>0.684098167690</td></tr>
 </table>
 
 As you can see, a simple average of the models outperforms any one model.  And our model stack outperforms the simple average.
