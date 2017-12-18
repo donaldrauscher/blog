@@ -62,15 +62,15 @@ class StackingClassifier(Pipeline):
         self.classifiers.fit(X, y)
 ```
 
-You can see this code implemented [here](https://github.com/donaldrauscher/hospital-readmissions).  I built a model to predict which recently hospitalized diabetic patients will be re-hospitalized within 30 days, using [this dataset](https://archive.ics.uci.edu/ml/datasets/diabetes+130-us+hospitals+for+years+1999-2008) from UCI.  My model stack contained a logistic regression with regularization, a random forest, and a gradient boosting (xgboost) model.  Here is a summary of model performance:
+You can see this code implemented [here](https://github.com/donaldrauscher/hospital-readmissions/blob/master/model.py).  I built a model to predict which recently hospitalized diabetic patients will be re-hospitalized within 30 days, using [this dataset](https://archive.ics.uci.edu/ml/datasets/diabetes+130-us+hospitals+for+years+1999-2008) from UCI.  My model stack contained a logistic regression with regularization, a random forest, and a gradient boosting (xgboost) model.  Here is a summary of model performance:
 
 <table class="pretty">
 <tr><th>Model</th><th>AUC</th></tr>
-<tr><td>LR+RF+XGB Model Stack</td><td>0.697156452633</td></tr>
-<tr><td>LR+RF+XGB Average</td><td>0.696020049702</td></tr>
+<tr><td>LR+RF+XGB Model Stack</td><td>0.697296858891</td></tr>
+<tr><td>LR+RF+XGB Average</td><td>0.696381690752</td></tr>
 <tr><td>Random Forest</td><td>0.693003188754</td></tr>
 <tr><td>XGBoost</td><td>0.692441123617</td></tr>
-<tr><td>Logistic Regression</td><td>0.684098167690</td></tr>
+<tr><td>Logistic Regression</td><td>0.685167372785</td></tr>
 </table>
 
 As you can see, a simple average of the models outperforms any one model.  And our model stack outperforms the simple average.
