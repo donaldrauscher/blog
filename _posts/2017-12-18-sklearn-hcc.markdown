@@ -2,7 +2,7 @@
 layout: post
 title: 'High Cardinality Categoricals with Sklearn'
 date:   2017-12-18
-tags: [python, sklearn, machine_learning]
+tags: [python, sklearn, machine_learning, feature_engineering]
 permalink: /sklearn-hcc
 ---
 
