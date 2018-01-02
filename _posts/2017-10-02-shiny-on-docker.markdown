@@ -1,13 +1,13 @@
 ---
 layout: post
-title: 'How to Deploy a Shiny App on Google Container Engine'
+title: 'How to Deploy a Shiny App on Google Kubernetes Engine'
 date:   2017-10-02
 tags: [gcp, docker, containers, kubernetes, shiny, farkle]
 permalink: /shiny-on-docker
 resources: [katex]
 ---
 
-[Shiny](https://shiny.rstudio.com/) is an awesome tool for building interactive apps powered by R. There are a couple options for [deploying](https://shiny.rstudio.com/deploy/) Shiny apps.  You can deploy to [Shinyapps.io](http://www.shinyapps.io/).  You can also deploy on your own machine using open source Shiny Server.  This tutorial shows how to setup a Docker container for a Shiny app and deploy on Google Container Engine using Kubernetes.  And because deploying the "Hello World" example is entirely unsatisfying, I chose to build an app to help guide strategy for a game I recently played.
+[Shiny](https://shiny.rstudio.com/) is an awesome tool for building interactive apps powered by R. There are a couple options for [deploying](https://shiny.rstudio.com/deploy/) Shiny apps.  You can deploy to [Shinyapps.io](http://www.shinyapps.io/).  You can also deploy on your own machine using open source Shiny Server.  This tutorial shows how to setup a Docker container for a Shiny app and deploy on Google Kubernetes Engine.  And because deploying the "Hello World" example is entirely unsatisfying, I chose to build an app to help guide strategy for a game I recently played.
 
 ## Farkle - A Game of <span style='text-decoration:line-through;'>Guts & Luck</span> Probability
 
@@ -69,7 +69,7 @@ gcloud docker -- push gcr.io/${PROJECT_ID}/shiny-farkle
 gcloud container images list-tags gcr.io/${PROJECT_ID}/shiny-farkle
 ```
 
-Finally, we're going to deploy this image on Google Container Engine using Kubernetes.  After creating the cluster, we set up a deployment for our image, a service, and an ingress, hooked up to a static IP, to make the service externally accessible.
+Finally, we're going to deploy this image on Google Kubernetes Engine.  After creating the cluster, we set up a deployment for our image, a service, and an ingress, hooked up to a static IP, to make the service externally accessible.
 ``` bash
 gcloud container clusters create shiny-cluster --num-nodes=3
 gcloud compute addresses create shiny-static-ip --global
