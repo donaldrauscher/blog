@@ -6,7 +6,7 @@ tags: [business_intelligence, redash, gke, gcp]
 permalink: /redash-gke
 ---
 
-Professionally, I have worked quite a lot with BI platforms Looker and Tableau. They are great BI platforms for an organization, though probably too heavy (and too expensive) for a small project or a bootstrapping startup.  Sometimes you just need something where you can write queries and dump them into a visualization.  Recently, I was looking to implement a lightweight BI tool for a personal project.  I chose to use [Redash](https://redash.io/), which you can [self-host](https://redash.io/help-onpremise/setup/setting-up-redash-instance.html) on your own infrastructure.  This post documents how to set up Redash on Google Cloud using GKE.
+Professionally, I have worked quite a lot with BI platforms Looker and Tableau. They are great BI platforms for an organization, though probably too heavy (and too expensive) for a small project or a bootstrapping startup.  Sometimes you just need something where you can write queries and dump them into a visualization.  Recently, I was looking to implement a lightweight BI tool for a personal project.  I chose to use [Redash](https://redash.io/), which you can [self-host](https://redash.io/help-onpremise/setup/setting-up-redash-instance.html) on your own infrastructure.  This post documents how to set up Redash on Google Cloud using GKE.  Because I am using CloudSQL as the Postgres backend and a persistent drive for Redis, we can delete our cluster when we're not using it and spin it back up as needed, without losing any data!
 
 ## Infrastructure Setup
 
@@ -19,6 +19,11 @@ CloudSQL backend:
 gcloud sql users create [POSTGRES_USER] cloudsqlproxy~% \
   --instance=[POSTGRES_INSTANCE_ID] \
   --password=[POSTGRES_PW]
+```
+
+Persistent drive for Redis:
+``` bash
+gcloud compute disks create --size 200GB redash-redis-disk
 ```
 
 Kubernetes cluster:
