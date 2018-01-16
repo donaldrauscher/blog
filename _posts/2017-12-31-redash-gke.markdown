@@ -10,8 +10,8 @@ Professionally, I have worked quite a lot with BI platforms Looker and Tableau. 
 
 ## Infrastructure Setup
 
-The necessary infrastructure on Google Cloud includes the following:
-* Postgres DB
+We will use the following Google Cloud components to set up Redash:
+* Postgres DB (via CloudSQL)
 * Persistent disk for Redis instance
 * Kubernetes cluster for Redash Docker image
 
@@ -301,9 +301,7 @@ objects:
               args: ["scheduler"]
 ```
 
-NOTE: I have used two mechanisms to mask sensitive variables in these files:
-1. [Terraform variables](https://www.terraform.io/intro/getting-started/variables.html) are placed in a separate `terraform.tfvars` file, which is automatically loaded.
-2. I use a nifty tool called [`ktmpl`](https://github.com/jimmycuadra/ktmpl) to do parameter substitutions in my Kubernetes manifests.
+Note: In Terraform, you can define [variables](https://www.terraform.io/intro/getting-started/variables.html) to pipe in parameter values throughout your configuration; I stored parameter values in a separate `terraform.tfvars` file which Terraform loads automatically.  Unfortunately, Kubernetes [does not have a native solution](https://github.com/kubernetes/kubernetes/issues/11492) for this.  Though I do use a nifty tool called [`ktmpl`](https://github.com/jimmycuadra/ktmpl) to do client-side parameter substitutions in my Kubernetes manifests.
 
 You can find all of my code up on my GitHub [here](https://github.com/donaldrauscher/redash-gke).  Cheers!
 
