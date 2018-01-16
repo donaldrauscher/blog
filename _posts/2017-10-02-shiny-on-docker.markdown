@@ -2,7 +2,7 @@
 layout: post
 title: 'How to Deploy a Shiny App on Google Kubernetes Engine'
 date:   2017-10-02
-tags: [gcp, docker, containers, kubernetes, shiny, farkle]
+tags: [gcp, gke, docker, containers, kubernetes, shiny, farkle]
 permalink: /shiny-on-docker
 resources: [katex]
 ---
@@ -69,15 +69,117 @@ gcloud docker -- push gcr.io/${PROJECT_ID}/shiny-farkle
 gcloud container images list-tags gcr.io/${PROJECT_ID}/shiny-farkle
 ```
 
-Finally, we're going to deploy this image on Google Kubernetes Engine.  After creating the cluster, we set up a deployment for our image, a service, and an ingress, hooked up to a static IP, to make the service externally accessible.
+Finally, we're going to deploy this image on Google Kubernetes Engine.  I used [Terraform](https://www.terraform.io/) to define and create the GCP infrastructure components for this project: a Kubernetes clusters and a global static IP.  Finally, we apply a Kubernetes manifest containing a deployment for our image, a service, and an ingress, connected to the static IP, to make the service externally accessible.
 ``` bash
-gcloud container clusters create shiny-cluster --num-nodes=3
-gcloud compute addresses create shiny-static-ip --global
-kubectl apply -f k8s/shiny-farkle-deploy.yaml
-kubectl apply -f k8s/shiny-farkle-service.yaml
-kubectl apply -f k8s/shiny-ingress.yaml
+terraform apply -var $(printf 'project=%s' $PROJECT_ID)
+
+gcloud container clusters get-credentials shiny-cluster
+gcloud config set container/cluster shiny-cluster
+
+ktmpl k8s/shiny-farkle-app.yaml \
+  --parameter PROJECT_ID ${PROJECT_ID} \
+  --parameter DOMAIN farkle.shiny.donaldrauscher.com | kubectl apply -f -
 ```
-Note: I set up the ingress to route traffic based on host.  We can add additional apps to our cluster by setting up another service/deployment and adding another routing rule to our ingress.
+
+Terraform configuration:
+``` bash
+variable "project" {}
+
+variable "region" {
+  default = "us-central1"
+}
+
+variable "zone" {
+  default = "us-central1-f"
+}
+
+provider "google" {
+  version = "~> 1.4"
+  project = "${var.project}"
+  region = "${var.region}"
+}
+
+resource "google_compute_global_address" "shiny-static-ip" {
+  name = "shiny-static-ip"
+}
+
+resource "google_container_cluster" "shiny-cluster" {
+  name = "shiny-cluster"
+  zone = "${var.zone}"
+  initial_node_count = "1"
+  node_config {
+    machine_type = "n1-standard-1"
+    oauth_scopes = ["https://www.googleapis.com/auth/devstorage.read_only"]
+  }
+}
+```
+
+Kubernetes manifest:
+``` yaml
+---
+kind: Template
+apiVersion: v1
+metadata:
+  name: shiny-farkle-template
+parameters:
+  - name: PROJECT_ID
+    required: true
+    parameterType: string
+  - name: DOMAIN
+    required: true
+    parameterType: string
+objects:
+  - apiVersion: extensions/v1beta1
+    kind: Ingress
+    metadata:
+      name: shiny-ingress
+      annotations:
+        kubernetes.io/ingress.global-static-ip-name: shiny-static-ip
+    spec:
+      rules:
+      - host: $(DOMAIN)
+        http:
+          paths:
+          - backend:
+              serviceName: shiny-farkle-service
+              servicePort: 80
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      name: shiny-farkle-service
+      labels:
+        app: shiny-farkle
+    spec:
+      type: NodePort
+      ports:
+      - port: 80
+        targetPort: 3838
+      selector:
+        app: shiny-farkle
+  - apiVersion: extensions/v1beta1
+    kind: Deployment
+    metadata:
+      name: shiny-farkle-deploy
+      labels:
+        app: shiny-farkle
+    spec:
+      replicas: 1
+      template:
+        metadata:
+          labels:
+            app: shiny-farkle
+        spec:
+          containers:
+          - name: master
+            imagePullPolicy: Always
+            image: gcr.io/$(PROJECT_ID)/shiny-farkle:latest
+            ports:
+            - containerPort: 3838
+```
+
+Note #1: I set up the ingress to route traffic based on host.  You can add additional apps to your cluster by setting up another service/deployment and adding another routing rule to the ingress.
+
+Note #2: In Terraform, you can define [variables](https://www.terraform.io/intro/getting-started/variables.html) to pipe in parameter values throughout your configuration.  Unfortunately, Kubernetes [does not have a native solution](https://github.com/kubernetes/kubernetes/issues/11492) for this.  Though I use a nifty tool called [`ktmpl`](https://github.com/jimmycuadra/ktmpl) to do client-side parameter substitutions in my Kubernetes manifests.
 
 ## Some Final Farkle Insights
 
