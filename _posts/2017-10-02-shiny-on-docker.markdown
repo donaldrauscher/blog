@@ -69,16 +69,15 @@ gcloud docker -- push gcr.io/${PROJECT_ID}/shiny-farkle
 gcloud container images list-tags gcr.io/${PROJECT_ID}/shiny-farkle
 ```
 
-Finally, we're going to deploy this image on Google Kubernetes Engine.  I used [Terraform](https://www.terraform.io/) to define and create the GCP infrastructure components for this project: a Kubernetes clusters and a global static IP.  Finally, we apply a Kubernetes manifest containing a deployment for our image, a service, and an ingress, connected to the static IP, to make the service externally accessible.
+Finally, we're going to deploy this image on Google Kubernetes Engine.  I used [Terraform](https://www.terraform.io/) to define and create the GCP infrastructure components for this project: a Kubernetes clusters and a global static IP.  Finally, we apply a Kubernetes manifest containing a deployment for our image and a service, connected to the static IP, to make the service externally accessible.  I packaged my Kubernetes resources in [a Helm chart](https://helm.sh/), which you can use to inject values / variables via template directives (e.g. \{\{ ... \}\}).
+
 ``` bash
-terraform apply -var $(printf 'project=%s' $PROJECT_ID)
+terraform apply -var project=${PROJECT_ID}
 
 gcloud container clusters get-credentials shiny-cluster
 gcloud config set container/cluster shiny-cluster
 
-ktmpl k8s/shiny-farkle-app.yaml \
-  --parameter PROJECT_ID ${PROJECT_ID} \
-  --parameter DOMAIN farkle.shiny.donaldrauscher.com | kubectl apply -f -
+helm install . --set projectId=${PROJECT_ID}
 ```
 
 Terraform configuration:
@@ -116,70 +115,45 @@ resource "google_container_cluster" "shiny-cluster" {
 
 Kubernetes manifest:
 ``` yaml
+{% raw %}
 ---
-kind: Template
 apiVersion: v1
+kind: Service
 metadata:
-  name: shiny-farkle-template
-parameters:
-  - name: PROJECT_ID
-    required: true
-    parameterType: string
-  - name: DOMAIN
-    required: true
-    parameterType: string
-objects:
-  - apiVersion: extensions/v1beta1
-    kind: Ingress
+  name: shiny-farkle-service
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: shiny-static-ip
+  labels:
+    app: shiny-farkle
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 3838
+  selector:
+    app: shiny-farkle
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: shiny-farkle-deploy
+  labels:
+    app: shiny-farkle
+spec:
+  replicas: 1
+  template:
     metadata:
-      name: shiny-ingress
-      annotations:
-        kubernetes.io/ingress.global-static-ip-name: shiny-static-ip
-    spec:
-      rules:
-      - host: $(DOMAIN)
-        http:
-          paths:
-          - backend:
-              serviceName: shiny-farkle-service
-              servicePort: 80
-  - apiVersion: v1
-    kind: Service
-    metadata:
-      name: shiny-farkle-service
       labels:
         app: shiny-farkle
     spec:
-      type: NodePort
-      ports:
-      - port: 80
-        targetPort: 3838
-      selector:
-        app: shiny-farkle
-  - apiVersion: extensions/v1beta1
-    kind: Deployment
-    metadata:
-      name: shiny-farkle-deploy
-      labels:
-        app: shiny-farkle
-    spec:
-      replicas: 1
-      template:
-        metadata:
-          labels:
-            app: shiny-farkle
-        spec:
-          containers:
-          - name: master
-            imagePullPolicy: Always
-            image: gcr.io/$(PROJECT_ID)/shiny-farkle:latest
-            ports:
-            - containerPort: 3838
+      containers:
+      - name: master
+        imagePullPolicy: Always
+        image: gcr.io/{{ .Values.projectId }}/shiny-farkle:latest
+        ports:
+        - containerPort: 3838
 ```
-
-Note #1: I set up the ingress to route traffic based on host.  You can add additional apps to your cluster by setting up another service/deployment and adding another routing rule to the ingress.
-
-Note #2: In Terraform, you can define [variables](https://www.terraform.io/intro/getting-started/variables.html) to pipe in parameter values throughout your configuration.  Unfortunately, Kubernetes [does not have a native solution](https://github.com/kubernetes/kubernetes/issues/11492) for this.  Though I use a nifty tool called [`ktmpl`](https://github.com/jimmycuadra/ktmpl) to do client-side parameter substitutions in my Kubernetes manifests.
+{% endraw %}
 
 ## Some Final Farkle Insights
 
@@ -201,5 +175,5 @@ Note #1: A big simplification that I make on game play is that _all dice that ca
 Note #2: Of course, these estimates are agnostic to the game situation.  In reality, you're trying to maximize your probability of winning, not your expected number of points.  If you are down by 5000 points, you're going to need to be a lot more aggressive.
 
  \-\-\-
- 
+
  02-10-2018 Update: I moved hosting of this app to [Now](https://zeit.co) for purely financial reasons.  They provide serverless deployments for Node.js and Docker.  They also provide 3 instances for free!
