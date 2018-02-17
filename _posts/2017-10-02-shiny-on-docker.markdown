@@ -77,6 +77,7 @@ terraform apply -var project=${PROJECT_ID}
 gcloud container clusters get-credentials shiny-cluster
 gcloud config set container/cluster shiny-cluster
 
+helm init
 helm install . --set projectId=${PROJECT_ID}
 ```
 
