@@ -207,9 +207,13 @@ metadata:
   name: ingress
   annotations:
     kubernetes.io/ingress.global-static-ip-name: airflow-static-ip
+    kubernetes.io/tls-acme: "true"
 spec:
   tls:
-  - secretName: cloudiap
+  - secretName: airflow-tls
+    hosts:
+    - web.{{ .Values.domain }}
+    - flower.{{ .Values.domain }}
   rules:
   - host: web.{{ .Values.domain }}
     http:
@@ -317,13 +321,13 @@ spec:
           {{- if eq .name "web" }}
           livenessProbe:
             httpGet:
-              path: /health
+              path: /
               port: 8080
             initialDelaySeconds: 60
             timeoutSeconds: 30
           readinessProbe:
             httpGet:
-              path: /health
+              path: /
               port: 8080
             initialDelaySeconds: 60
             timeoutSeconds: 30
@@ -360,8 +364,6 @@ spec:
 
 ## Deploy Instructions
 
-Note: Having a self-signed cert is obviously far from ideal.  However, I only set up HTTPS because I secured my instance with [Cloud IAP](https://cloud.google.com/iap/), which requires a HTTPS load balancer.  I would like to implement something like [this](https://github.com/jetstack/kube-lego) to automatically request certificates from [Let's Encrypt](https://letsencrypt.org/).
-
 (1) Store project id and Fernet key as env variables; create SSL cert / key
 
 ``` bash
@@ -373,11 +375,6 @@ if [ ! -f '.keys/fernet.key' ]; then
 else
   export FERNET_KEY=$(cat .keys/fernet.key)
 fi
-
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
-  -keyout .keys/tls.key \
-  -out .keys/tls.crt \
-  -subj "/CN=cloudiap/O=cloudiap"
 ```
 
 (2) Create Docker image and upload to Google Container Repository
@@ -400,14 +397,28 @@ gcloud config set container/cluster airflow-cluster
 
 kubectl create secret generic cloudsql-instance-credentials \
   --from-file=credentials.json=.keys/airflow-cloudsql.json
-
-kubectl create secret tls cloudiap \
-  --cert=.keys/tls.crt --key=.keys/tls.key
-
-helm init
 ```
 
-(4) Deploy with Kubernetes
+(4) Set up Helm / Kube-Lego for TLS
+
+Note: You only need to set up [kube-lego](https://github.com/jetstack/kube-lego) if you want to set up TLS using [Let's Encrypt](https://letsencrypt.org/). I only set up HTTPS because I secured my instance with [Cloud IAP](https://cloud.google.com/iap/), which requires a HTTPS load balancer.  
+
+``` bash
+kubectl create serviceaccount -n kube-system tiller
+kubectl create clusterrolebinding tiller-binding --clusterrole=cluster-admin --serviceaccount kube-system:tiller
+helm init --service-account tiller
+
+kubectl create namespace kube-lego
+
+helm install \
+  --namespace kube-lego \
+  --set config.LEGO_EMAIL=donald.rauscher@gmail.com \
+  --set config.LEGO_URL=https://acme-v01.api.letsencrypt.org/directory \
+  --set config.LEGO_DEFAULT_INGRESS_CLASS=gce \
+  stable/kube-lego
+```
+
+(5) Deploy with Kubernetes
 
 ``` bash
 helm install . \
