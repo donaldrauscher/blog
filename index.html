@@ -10,31 +10,50 @@ layout: default
 {% if paginator.total_pages > 1 %}
 <ul class="pagination">
   <li class="pagination-item">
-    <a class="pagination-link pagination-link--non-numeric" {% if paginator.page == 1 %}disabled="disabled"{% endif %} href="{{ '/index.html' | replace: '//', '/' }}">&larr; First page</a>
-  </li>
-  <li class="pagination-item">
     <a class="pagination-link pagination-link--non-numeric" {% if paginator.previous_page == nil %}disabled="disabled"{% endif %} href="{{ paginator.previous_page_path | replace: '//', '/' }}">&larr; Prev</a>
   </li>
 
   <!-- Numbers -->
-  {% for page in (1..paginator.total_pages) %}
+  {% assign page_start = paginator.page | minus: site.paginate_window %}
+  {% assign page_end = paginator.page | plus: site.paginate_window %}
+
+  {% if page_start > 1 %}
     <li class="pagination-item">
-      {% if page == paginator.page %}
-        <a class="pagination-link pagination-link--selected" href="#">{{ page }}</a>
-      {% elsif page == 1 %}
-        <a class="pagination-link" href="{{ '/index.html' | replace: '//', '/' }}">{{ page }}</a>
-      {% else %}
-        <a class="pagination-link" href="{{ site.paginate_path | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
-      {% endif %}
+      <a class="pagination-link" href="{{ '/index.html' | replace: '//', '/' }}">1</a>
     </li>
+    <li class="pagination-item">
+      <span class="pagination-link pagination-link--non-numeric">...</span>
+    </li>
+  {% endif %}
+
+  {% for page in (page_start..page_end) %}
+    {% if page == paginator.page %}
+      <li class="pagination-item">
+        <a class="pagination-link pagination-link--selected" href="#">{{ page }}</a>
+      </li>
+    {% elsif page == 1 %}
+      <li class="pagination-item">
+        <a class="pagination-link" href="{{ '/index.html' | replace: '//', '/' }}">{{ page }}</a>
+      </li>
+    {% elsif page >= 1 and page <= paginator.total_pages %}
+      <li class="pagination-item">
+        <a class="pagination-link" href="{{ site.paginate_path | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+      </li>
+    {% endif %}
   {% endfor %}
+
+  {% if paginator.total_pages > page_end %}
+    <li class="pagination-item">
+      <span class="pagination-link pagination-link--non-numeric">...</span>
+    </li>
+    <li class="pagination-item">
+      <a class="pagination-link" href="{{ site.paginate_path | replace: '//', '/' | replace: ':num', paginator.total_pages }}">{{ paginator.total_pages }}</a>
+    </li>
+  {% endif %}
   <!-- End of numbers -->
 
   <li class="pagination-item">
     <a class="pagination-link pagination-link--non-numeric" {% if paginator.next_page == nil %}disabled="disabled"{% endif %} href="{{ paginator.next_page_path | replace: '//', '/' }}">Next &rarr;</a>
-  </li>
-  <li class="pagination-item">
-    <a class="pagination-link pagination-link--non-numeric" {% if paginator.page == paginator.total_pages %}disabled="disabled"{% endif %} href="{{ site.paginate_path | replace: '//', '/' | replace: ':num', paginator.total_pages }}">Last page &rarr;</a>
   </li>
 </ul>
 {% endif %}
