@@ -22,7 +22,7 @@ kramdown:
   syntax_highlighter: rouge
 
 # Pagination
-paginate: 5
+paginate: 3
 
 # Gems
 gems: [jekyll-paginate]
