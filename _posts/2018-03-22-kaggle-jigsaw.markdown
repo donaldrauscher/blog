@@ -34,7 +34,9 @@ Here's a snapshot of the Dask web UI during hyper parameter tuning:
 
 ## Dask Cluster
 
-I set up my Dask cluster using Kubernetes.  And, of course, there was a very useful [Helm chart](https://github.com/kubernetes/charts/tree/master/stable/dask) for this already.  This Helm chart sets up a Dask scheduler + web UI, Dask worker(s), and a Jupyter Notebook instance.  When installing the Helm chart, you can use an accompanying `values.yaml` file to specify which Python packages you need to install.  I also used Terraform to create/scale my K8s cluster.
+I set up my Dask cluster using Kubernetes.  And, of course, there was a very useful  for this already.  This Helm chart sets up a Dask scheduler + web UI, Dask worker(s), and a Jupyter Notebook instance.  When installing the Helm chart, you can use an accompanying `values.yaml` file to specify which Python packages you need to install.  I also used Terraform to create/scale my K8s cluster.
+
+I created a modified version of [this Dask Helm chart](https://github.com/kubernetes/charts/tree/master/stable/dask) which adds a [`nodeSelector`](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector) option for each of the deployments.  In K8s, we can create two node pools: one for the worker pods and one for the Jupyter/scheduler pods.  That way, when we want to add/remove workers, we can do so without taking down Jupyter!
 
 I set up [three scripts](https://github.com/donaldrauscher/kaggle-jigsaw/tree/master/scripts) for initializing cluster, scaling up the number of nodes / workers, and destroying the cluster when we're done.
 
@@ -554,6 +556,4 @@ ydata_test_pred.to_csv('submission.csv', index=False)
 
 ===
 
-Pretty good!  With more time, I definitely would have focused on adding more models to the stack, e.g. Naive Bayes and RF/XGBoost.  I'd also like to create a modified version of the Dask Helm chart which adds a [`nodeSelector`](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector) option for the Jupyter/scheduler pods.  In K8s, we can create two node pools: one for the workers and one for Jupyter/scheduler.  That way, when we want to add/remove workers, we can do so without taking down Jupyter/scheduler!
-
-A [link](https://github.com/donaldrauscher/kaggle-jigsaw) to my repo on GH.
+Pretty good!  With more time, I definitely would have focused on adding more models to the stack, e.g. Naive Bayes and RF/XGBoost.  A [link](https://github.com/donaldrauscher/kaggle-jigsaw) to my repo on GH.
